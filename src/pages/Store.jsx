@@ -20,7 +20,7 @@ const Store = () => {
   // },[] )
 
   return (
-    <div id='store'>
+    <div id='store' className='titleBox'>
       Store
       <div>
         {/* <Link className='list' onClick={() => productsList.ToList()}><h5>All Product</h5></Link> */}

@@ -2,7 +2,12 @@ import React from 'react'
 
 const Recommend = () => {
   return (
-    <div>Recommend</div>
+    <div id='recommend'>
+        <h1>המלצות</h1>
+        <div>
+            
+        </div>
+    </div>
   )
 }
 

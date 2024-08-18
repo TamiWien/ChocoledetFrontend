@@ -11,6 +11,10 @@ import Store from "./pages/Store";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
+import Users from "./components/Users";
+import Login from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
+import SuccessSignUp from "./pages/SuccessSignUp";
 
 
 const router = createBrowserRouter([
@@ -19,6 +23,7 @@ const router = createBrowserRouter([
         {path: "/about", element: <About/>},
         {path: "/ourBox", element: <OurBox/>},
         {path: "/recommend", element: <Recommend/>},
+        {path: "/users", element: <Users/>},
         {path: "/faq", element: <FAQ/>},
         {path: "/gallery", element: <Gallery/>},
         {path: "/store", 
@@ -53,6 +58,9 @@ const router = createBrowserRouter([
                 }
             ]},
         {path: "/contactUs", element: <ContactUs/>},
+        // {path: "/login", element: <Login/>},
+        // {path: "/signup", element: <SignUp/>},
+        // {path: "/successSignup", element: <SuccessSignUp/>},
         {path: "*", element: <NotFound/>},
     ]}
 ]);

@@ -4,7 +4,7 @@ const Packages = () => {
   return (
     <div id='packages'>
         <div id='packagesTitleBox'>
-          <div id='packagesTitle'>
+          <div id='packagesTitle' className='titleBox'>
               <h1>מארזים ייחודיים ליולדות</h1>
           </div>
         </div>

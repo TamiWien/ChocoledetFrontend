@@ -24,9 +24,9 @@ const Footer = () => {
               </div>
                 <div id='join'>JOIN US!</div>
                 <div id='comp'>
-                  <label class="abel">Email *</label>
+                  <label className="abel">Email *</label>
                   <input name="email" type="email" id="email" />
-                  <button class="email-button">Send</button>
+                  <button className="email-button">Send</button>
                 </div>
           </div>
       </div>

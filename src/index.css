@@ -1,7 +1,13 @@
+#users{
+  width: 100%;
+  height: 900px;
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Assistant", assistant, heebo, rubik, open sans hebrew;
+  color: #5c2c0c;
 }
 
 body{
@@ -31,6 +37,8 @@ h1{
   text-align: center;
 }
 
+/***************************************/
+
 .logoImg{
   width: 100px;
   float: right;
@@ -40,7 +48,7 @@ h1{
 #menuBox{
   width: 100%;
   height: 70px;
-  z-index: 1;
+  z-index: 2;
 }
 
 #menu{
@@ -53,27 +61,68 @@ h1{
   position:fixed;
 }
 
-.menuLink{
-  line-height: 70px;
-  display: block;
-  float: right;
-  margin: 0px 1.2%;
-  text-align: center;
-  color: #5c2c0c;
+#menuLogo{
+  width: 20%;
+}
+
+#menuLinks{
+  width: 85%;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menuLink {
+  position: relative;
+    display: inline-block;
+    line-height: 19px;
+    padding: 0px 2.5%;
+    text-align: center;
+    color: #5c2c0c;
+    text-decoration: none;
+    height: 70px;
+    align-content: center;
+}
+
+.menuLink:hover {
+  background-color: #deb88721;
+}
+
+.menuLink::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #5c2c0c; 
+  transition: width 0.4s ease, left 0.4s ease; 
+}
+
+.menuLink:hover::after {
+  width: 100%; 
+  left: 0; 
 }
 
 #secondMenu{
+  display: none;
+}
+
+.secondMenuLinks{
   width: 147px;
   margin-right: -20px;
   padding: 0px 20px;
   background-color: #ffffff96;
   color: #5c2c0c;
-  height: 100px;
-  line-height: 50px;
-  border-top: solid 1px;
-  display: none;
+  height: 56px;
+  line-height: 56px;
+  border-top: solid 1px #ddd;
+  display: block;
 }
 
+.secondMenuLinks:hover{
+  background-color: #ffffffe0;
+}
 
 #newBorn{
   background-color: #c79446;
@@ -81,31 +130,154 @@ h1{
   width: 147px;
 }
 
+#newBorn:hover {
+  height: 70px;
+  line-height: 70px;
+}
+
+#loginUpBtn{
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: #fff;
+  color: #0056b3;
+  margin: 0% 28px;
+  font-size: 30px;
+  box-shadow: none;
+}
+
+#loginContainer{
+  display: grid;
+  text-align: center;
+}
+
+#loginUser{
+  font-size: 15px;
+}
+
+/***************************************/
+
+
 #homePage{
   width: 100%;
+  display: grid;
+}
+
+#homePage h1 {
+  font-size: 50px;
+  font-weight: 200;
+  text-decoration: none;
+  color: #373737;
+  text-align: center;
 }
 
 #video{
   width: 100%;
 }
 
+.contentText{
+  display: flex;
+  position: absolute;
+  height: 300px;
+  right: 49%;
+  bottom: 10%;
+}
+
 .contentVideo{
   width: 100%;
   float: right;
+  display: flex;
 }
+
+/* VideoTitle */
+.type-container {
+  display: flex;
+    align-items: flex-start;
+    font-size: 47px;
+    line-height: 48px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 5px;
+    flex-direction: column;
+}
+
+.typing-container {
+  height: 102px;
+}
+
+.typing-text {
+  display: inline;
+  color:#fff;
+  font-family: "Amatic SC", assistant, heebo, rubik, open sans hebrew;
+  white-space: pre-wrap;
+}
+
+.typing-text-2 {
+  color:#c79446;
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.typing-text-3 {
+  color: #c79446;
+    font-size: 101px;
+    font-weight: 900;
+    margin: -65px 154px 29px 0px;
+}
+
+.typing-text-4 {
+  color:#fff;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.cursor {
+  display: inline;
+  animation: blink 0.75s step-start infinite;
+  color: #fff;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+/***************************************/
+
 
 #about{
   width: 100%;
+  height: max-content;
+  display: grid;
 }
 
-#about h1{
+
+@keyframes slideInFromBottom {
+  0% {
+      transform: translateY(50px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+#about h1 {
   color: #5c2c0c;
-  margin-top: 20px;
+  margin-top: 30px;
+  line-height: 100px;
+  opacity: 0; 
+  transform: translateY(50px); 
+  animation: slideInFromBottom 1s ease-out forwards; 
 }
 
 #aboutLeft{
   width: 50%;
   float: right;
+  margin: -50px 5% -86px 0px;
+  z-index: 1;
+  position: relative;
 }
 
 #homesplash{
@@ -113,39 +285,289 @@ h1{
 }
 
 #aboutRight{
-  width: 50%;
+  width: 45%;
   float: right;
 }
 
 #logoMin{
-  width: 34%;
+  width: 32%;
   margin: 6% 10% 2% 10%;
 }
+
+#aboutRight p{
+  font-size: 17px;
+    margin-top: 20px;
+    line-height: 24px;
+}
+
+#aboutBtn{
+  width: 189px;
+    height: 50px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    border: solid;
+    margin: 53px auto -27px;
+    z-index: 1;
+    position: relative;
+    border-radius: 50px;
+}
+
+#aboutInfo{
+  background-color: transparent;
+  background-image: linear-gradient(180deg, #C7944630 0%, #FFFFFF12 100%);
+  width: 84%;
+  padding: 8%;
+  height: 300px;
+  align-content: center;
+}
+
+.aboutInfo{
+  background-color: #ff9090;
+    width: 18%;
+    height: 200px;
+    margin: 1.5%;
+    float: right;
+    text-align: center;
+    align-content: center;
+    padding: 2%;
+}
+
+.aboutInfoTitle h2{
+  font-size: 45px;
+    font-weight: 800;
+    line-height: 38px;
+    margin-bottom: 10px;
+}
+
+/***************************************/
 
 #ourBox{
   width: 100%;
   height: 300px;
 }
 
+/***************************************/
+
 #recommends{
   width: 100%;
   height: 300px;
 }
 
+
+/***************************************/
+
 #gallery{
   width: 100%;
-  height: 300px;
+  height: 500px;
 }
+
+.gallery-container {
+  position: relative;
+  height: 300px; /* קבע את הגובה שאתה רוצה */
+  overflow: hidden;
+}
+
+.gallery-wrapper {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
+
+.gallery-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.gallery-image {
+  min-width: 20vw; /* גובה התמונה הוא 1/5 מהמסך */
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-button {
+  position: absolute;
+    top: 50%;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1;
+    width: 38px;
+    height: 38px;
+    margin: 0px 2% 0px 2%;
+    line-height: 0px;
+    background-color: #4a1f0a4f;
+    box-shadow: 0px 0px 3px 0px #a9a9a9;
+}
+
+.gallery-button:hover {
+  background-color: #4a1f0a8c;
+}
+
+.gallery-button.prev {
+  left: 10px;
+}
+
+.gallery-button.next {
+  right: 10px;
+}
+
+.prev::after {
+  content: ">";
+  margin-right: 4px;
+    font-family: fangsong;
+}
+
+.next::after {
+  content: "<";
+    margin-left: 4px;
+    font-family: fangsong;
+}
+
+.gallery-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/***************************************/
+
 
 #faq{
   width: 100%;
   height: 300px;
 }
 
+/***************************************/
+
+
 #contact{
   width: 100%;
-  height: 300px;
 }
+
+form {
+  max-width: 85%;
+  margin: 40px auto;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+.form-group.full-width {
+  flex: 1 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  width: 85%;
+    padding: 4%;
+    border: none;
+    border-bottom: 2px solid #c0a487;
+    height: 35px;
+    font-size: 17px;
+    direction: rtl;
+    font-weight: 200;
+}
+
+.second-row {
+  display: flex;
+  gap: 10px;
+}
+
+.second-row .date {
+  flex: 0 0 33%;
+}
+
+.second-row .quantity {
+  flex: 0 0 16%; 
+}
+
+.second-row .kitType {
+  flex: 0 0 52%; 
+}
+
+input[type="number"]{
+  width: 75%;
+  padding: 4%;
+  height: 48px;
+  background-color: #c0a4874f;
+  font-size: 30px;
+}
+
+#kitType{
+    height: 60px;
+}
+
+#additionalInfo{
+  height: 60px;
+    padding: 2%;
+    width: 95%;
+    background-color: #c0a4874f;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button {
+  color: #ffffff;
+    margin: 0px 35% 25px 35%;
+    width: 30%;
+    height: 58px;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 600;
+    border: solid;
+    box-shadow: 5px 4px 0px 0px #c0a4874f;
+    border-radius: 50px;
+    background-color: #5c2c0c;
+}
+
+button:hover {
+  background-color: #4a1f0a;
+}
+
+/***************************************/
+
 
 #contactUs{
   background-color: rgb(122, 56, 161);
@@ -153,19 +575,28 @@ h1{
   height: 500px;
 }
 
+/***************************************/
+
+
 #store{
   background-color: rgb(30, 205, 50);
   width: 100%;
   height: 500px;
 }
 
-#productsTitleBox{
+/***************************************/
+
+.titleBox{
   width: 100%;
   height: 450px;
-  background-image: url('./assets/images/products.webp');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+}
+
+#productsTitleBox{
+  background-image: url('./assets/images/products.webp');
 }
 
 #productsTitle{
@@ -183,6 +614,9 @@ h1{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/***************************************/
+
 
 #packagesContent{
   width: 100%;
@@ -209,11 +643,111 @@ h1{
   align-content: center;
 }
 
+/***************************************/
+
+/* SignUp.css */
+.signup-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  text-align: center;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.signup-container button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+#successSignUp{
+  display: none;
+}
+
+/***************************************/
+
+/* Login.css */
+
+.login-container {
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  max-width: 23%;
+  padding: 20px;
+  background-color: #fffffff0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.login-container h2 {
+  text-align: center;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+/***************************************/
+
 #notFound{
   background-color: rgb(85, 33, 47);
   width: 100%;
   height: 500px;
 }
+
+/***************************************/
+
 
 #Footer{
   width: 100%;
@@ -316,11 +850,11 @@ h1{
 }
 
 #navMenuFooter #email:hover{
-  color: #ffffffc9;;
+  color: #ffffffc9;
 }
 
 .email-button:hover{
-  color: #ffffffc9;;
+  color: #ffffffc9;
 }
 
 #comp #email{
@@ -341,6 +875,7 @@ h1{
   border: none;
   font-weight: 100;
   line-height: 44px;
+  margin: 0px;
 }
 
 #by{
