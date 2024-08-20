@@ -38,6 +38,15 @@ h1{
 }
 
 /***************************************/
+#darkBody{
+  z-index: 1 !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+}
 
 .logoImg{
   width: 100px;
@@ -48,7 +57,7 @@ h1{
 #menuBox{
   width: 100%;
   height: 70px;
-  z-index: 2;
+  z-index: 10;
 }
 
 #menu{
@@ -76,7 +85,7 @@ h1{
   position: relative;
     display: inline-block;
     line-height: 19px;
-    padding: 0px 2.5%;
+    padding: 0px 1.9%;
     text-align: center;
     color: #5c2c0c;
     text-decoration: none;
@@ -108,51 +117,61 @@ h1{
   display: none;
 }
 
-.secondMenuLinks{
+#newBorn{
+  background-color: #c79446;
+  padding: 0px 10px;
   width: 147px;
-  margin-right: -20px;
-  padding: 0px 20px;
-  background-color: #ffffff96;
-  color: #5c2c0c;
-  height: 56px;
-  line-height: 56px;
-  border-top: solid 1px #ddd;
-  display: block;
+  height: 70px !important;
+}
+
+#secondMenuNB{
+  height: 70px;
+  align-content: center;
+}
+
+.secondMenuLinks{
+  width: 157px;
+    margin-right: -10px;
+    padding: 0px 5px;
+    background-color: #ffffff96;
+    color: #5c2c0c;
+    height: 56px;
+    line-height: 16px;
+    border-top: solid 1px #ddd;
+    display: block;
+    font-size: 15px;
+    align-content: center;
 }
 
 .secondMenuLinks:hover{
   background-color: #ffffffe0;
 }
 
-#newBorn{
-  background-color: #c79446;
-  padding: 0px 20px;
-  width: 147px;
+#menuIcons{
+  display: flex;
+  margin: 19px 20px 0px 20px;
 }
 
-#newBorn:hover {
-  height: 70px;
-  line-height: 70px;
-}
-
-#loginUpBtn{
-  width: 20px;
-  height: 20px;
-  border: none;
-  background-color: #fff;
-  color: #0056b3;
-  margin: 0% 28px;
-  font-size: 30px;
-  box-shadow: none;
+.menuIcon{
+  width: 46px;
+  font-size: 25px;
+  text-align: center;
 }
 
 #loginContainer{
   display: grid;
-  text-align: center;
+  align-content: center;
+}
+
+#loginUpBtn{
+  height: 25px;
 }
 
 #loginUser{
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 26px;
+  text-align: center;
+  align-content: start;
 }
 
 /***************************************/
@@ -498,7 +517,7 @@ input[type="number"],
 select,
 textarea {
   width: 85%;
-    padding: 4%;
+    padding: 10px;
     border: none;
     border-bottom: 2px solid #c0a487;
     height: 35px;
@@ -647,12 +666,7 @@ button:hover {
 
 /* SignUp.css */
 .signup-container {
-  max-width: 400px;
-  margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .signup-container h2 {
@@ -669,17 +683,10 @@ button:hover {
 
 .signup-container button {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
+  margin: 27px 0;
 }
 
 .signup-container button:hover {
-  background-color: #0056b3;
 }
 
 .error-message {
@@ -703,34 +710,31 @@ button:hover {
   padding: 20px;
   background-color: #fffffff0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 5;
 }
 
 .login-container h2 {
   text-align: center;
+    line-height: 78px;
 }
 
 .login-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  width: 90%;
+    padding: 10px;
+    margin: 10px 0px;
+    height: 31px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 200;
 }
 
 .login-container button {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
+  margin: 27px 0;
 }
 
 .login-container button:hover {
-  background-color: #0056b3;
 }
 
 .error-message {
@@ -759,13 +763,13 @@ button:hover {
 }
 
 #navMenuFooter{
-  width: 62%;
+  width: 33%;
     align-content: center;
     padding: 3%;
 }
 
 .navMenuFooter{
-  width: 88%;
+  width: 33%;
     padding: 3%;
     color: #fff;
     text-align: left;
@@ -792,23 +796,33 @@ button:hover {
 }
 
 .navFooter {
-  width: 65%;
-  display: block;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 100;
-  line-height: 54px;
-  align-content: center;
-  margin: 0%;
-  padding-left: 3%;
+  width: 33%;
+    display: block;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 100;
+    line-height: 54px;
+    align-content: center;
+    margin: 0%;
+    padding-left: 3%;
+    text-align: center;
 }
 
 .logoImgFooter{
-  width: 85%;
+  width: 50%;
 }
 
 .listMenuFooter{
   text-decoration: none;
+}
+
+.footerLink{
+  width: 100%;
+  display: block;
+  text-align: right;
+  color: #fff;
+  font-weight: 300;
+  line-height: 30px;
 }
 
 .faRegCheckCircle{
@@ -880,9 +894,11 @@ button:hover {
 
 #by{
   width: 100%;
-    height: 45px;
-    line-height: 40px;
-    color: #fff;
-    background-color: #5a4e42;
-    text-align: center;
+  height: 45px;
+  line-height: 46px;
+  color: #fff;
+  background-color: #5a4e42;
+  text-align: center;
+  letter-spacing: 4px;
+  font-weight: 200;
 }

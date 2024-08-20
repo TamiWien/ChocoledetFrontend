@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { apiClient } from '../api/apiClient'; // Adjust import path as needed
+import { apiClient } from '../api/apiClient'; 
 import { IoCloseOutline } from 'react-icons/io5';
-// import './Login.css'; // Import CSS file for styling
 
-const Login = () => {
+const Login = ({toggleSingUp}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,21 +12,31 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      await apiClient.post('Auth/Login', { email, password }); // Adjust endpoint as needed
-      navigate('/dashboard'); // Redirect on successful login
+      await apiClient.post('Auth/Login', { email, password }); 
+      navigate('/dashboard'); 
     } catch (err) {
-      setError('Login failed');
+      setError('שגיאת התחברות');
     }
   };
 
-  const toggleOpen = () => {
+  const toggleClose = () => {
     setIsOpen (!isOpen)
+    if(!isOpen){
+      // var element = document.getElementById('darkBody');
+      // element.style.display = 'block';
+    }
+    else{
+      // element.style.display = 'none';
+    }
   }
 
   return (
     <>
-    {isOpen && <div className="login-container">
-       <NavLink onClick={toggleOpen}><IoCloseOutline /></NavLink>
+    {isOpen && <div>
+      <div id='darkBody'> </div>
+      <div className="login-container">
+        <div id="overlay" className="overlay"></div>
+       <NavLink onClick={toggleClose}><IoCloseOutline /></NavLink>
       <h2>התחברות</h2>
       <input
         type="email"
@@ -43,8 +52,11 @@ const Login = () => {
       />
       {error && <p className="error-message">{error}</p>}
       <button onClick={handleLogin}>Login</button>
-      <button onClick={() => navigate('/signup')}>Sign Up</button>
-    </div>} 
+      <p>עוד לא הצטרפתם לקהילה שלנו? בואו להיות חלק &gt;&gt; <NavLink onClick={toggleSingUp}><b>הירשמו כאן</b></NavLink></p>
+    </div>
+    </div>
+    
+    } 
     </>
   );
 };

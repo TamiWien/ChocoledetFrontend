@@ -12,8 +12,8 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import Users from "./components/Users";
-import Login from "./pages/LogIn";
-import SignUp from "./pages/SignUp";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import SuccessSignUp from "./pages/SuccessSignUp";
 
 
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         {path: "/contactUs", element: <ContactUs/>},
         // {path: "/login", element: <Login/>},
         // {path: "/signup", element: <SignUp/>},
-        // {path: "/successSignup", element: <SuccessSignUp/>},
+        {path: "/successSignup", element: <SuccessSignUp/>},
         {path: "*", element: <NotFound/>},
     ]}
 ]);

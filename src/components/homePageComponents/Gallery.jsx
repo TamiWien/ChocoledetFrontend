@@ -19,7 +19,7 @@ const Gallery = () => {
 
   return (
     <div className="gallery-container">
-        <h1>Gallery</h1>
+        <h1>גלריה</h1>
       <button className="gallery-button prev" onClick={handlePrev}></button>
       <div className="gallery-wrapper">
         <div className="gallery-images" style={{ transform: `translateX(-${currentIndex * 100 / 5}%)` }}>

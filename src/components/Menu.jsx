@@ -1,16 +1,33 @@
 import React, { useRef, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
 import ScrollToTop from './ScrollToTop'
-import Login from '../pages/LogIn';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaBabyCarriage } from 'react-icons/fa';
+import { GoHeart } from 'react-icons/go';
+import { PiShoppingCartSimple, PiUser } from 'react-icons/pi';
+import SignUp from './SignUp';
+import { IoCloseOutline } from 'react-icons/io5';
 
 const Menu = () => {
+  const secendMenuRef = useRef(null);
+  const loginUpRef = useRef(null);
+  const [loginUser, setLoginUser] = useState('התחבר')
+  const [isSignUpVisible, setSignUpVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
 
-    const secendMenuRef = useRef(null);
-    const loginUpRef = useRef(null);
-    const [loginUser, setLoginUser] = useState('התחבר')
-    const [isLoginVisible, setLoginVisible] = useState(false);
+  const handleLogin = async () => {
+    try {
+      await apiClient.post('Auth/Login', { email, password }); 
+      navigate('/dashboard'); 
+    } catch (err) {
+      setError('שגיאת התחברות');
+    }
+  };
 
     // פונקציה מטפלת בגלילה למקום בעמוד מתוכו ומחוצה לו - התחלה
     const location = useLocation(); 
@@ -34,21 +51,15 @@ const Menu = () => {
         secendMenuRef.current.style.display = 'none';
         }
     }
-
-    const loginUpS = () => {
-      if (loginUpRef.current) {
-        loginUpRef.current.style.display = 'block';
-        }
+  
+    const toggleClose = () => {
+      setIsOpen (!isOpen)
     }
 
-    const toggleLogin = () => {
-      setLoginVisible(!isLoginVisible); 
+    const toggleSignUp = () => {
+      setSignUpVisible(!isSignUpVisible);
+      setIsLogin (!isLogin)
     }
-  // const loginOut = () => {
-  //   if (secendMenuRef.current) {
-  //   secendMenuRef.current.style.display = 'none';
-  //   }
-  // }
 
   return (
     <div id='menuBox'>
@@ -61,21 +72,56 @@ const Menu = () => {
             {renderLink("/#gallery", "גלריה")}
             {renderLink("/#faq", "שאלות נפוצות")}
             {renderLink("/#contact", "הזמינו סדנה")}
-            <NavLink to="/store" id='newBorn' className={'menuLink'} onMouseOver={menuUp} onMouseOut={menuOut}>שוקולדת ליולדת
+            <NavLink to="/store" id='newBorn' className={'menuLink'} onMouseOver={menuUp} onMouseOut={menuOut}><div id='secondMenuNB'><FaBabyCarriage /> <br/>שוקולדת ליולדת </div>
                 <div id='secondMenu' ref={secendMenuRef} onMouseOut={menuOut}>
                     <NavLink to="/store/products" className='secondMenuLinks'>מוצרים מותאמים אישית </NavLink>
                     <NavLink to="/store/packages" className='secondMenuLinks'>מארזים ייחודיים ליולדות </NavLink>
                 </div>
             </NavLink>
             <NavLink to="/contactUs" className={'menuLink'}>צרו קשר</NavLink>
-            <div id='loginContainer'>
-              <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleLogin}><FaUserCircle/></NavLink>
-              <div id='loginUser'>{loginUser}</div>
+            <div id='menuIcons'>
+                <div className='menuIcon'>
+                  <NavLink to="/store"><GoHeart/></NavLink>
+                </div>
+                <div className='menuIcon'>
+                  <NavLink to="/store"><PiShoppingCartSimple/></NavLink>
+                </div>
+                <div id='loginContainer' className='menuIcon'>
+                  <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/></NavLink>
+                  <div id='loginUser'>{loginUser}</div>
+                </div>
             </div>
-            {isLoginVisible && <Login />}
-            <ScrollToTop />
           </div>
         </div>
+        {isOpen && <div>
+          <div id='darkBody'> </div>
+          <div className="login-container">
+            <div id="overlay" className="overlay"></div>
+          <NavLink onClick={toggleClose}><IoCloseOutline /></NavLink>
+          {isLogin && <div>
+            <h2>התחברות</h2>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p className="error-message">{error}</p>}
+            <button onClick={handleLogin}>Login</button>
+          </div>
+          }
+          <p>עוד לא הצטרפתם לקהילה שלנו? בואו להיות חלק &gt;&gt; <NavLink onClick={toggleSignUp}><b>הירשמו כאן</b></NavLink></p>
+          {isSignUpVisible && <SignUp setIsOpen={setIsOpen}/>}
+          </div>
+        </div>
+        } 
+      <ScrollToTop />
     </div>
   )
 }

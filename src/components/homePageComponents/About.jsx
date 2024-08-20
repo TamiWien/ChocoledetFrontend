@@ -1,6 +1,7 @@
 import React from 'react'
 import homesplash from '../../assets/images/homesplash.svg'
 import logoMin from '../../assets/images/logoMin.svg'
+import { FaChildReaching } from 'react-icons/fa6'
 
 const About = () => {
   return (
@@ -25,6 +26,7 @@ const About = () => {
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2>גילאים</h2>
+                    <FaChildReaching/>
                 </div>
                 <p>99 – 6</p>
             </div>
