@@ -3,11 +3,12 @@ import { apiClient } from "../api/apiClient";
 const getAllUsers = async () => {
     try {
         const res = await apiClient.get("Users");
-        return res.data;
+        return res.data; 
     } catch (error) {
+        console.error('Error fetching users:', error);
         throw error;
     }
-}
+};
 
 const getUserById = async (userId) => {
     try {
@@ -44,13 +45,14 @@ const deleteUser = async (userId) => {
     }
 }
 
-const loginUser = async (email,password) => {
+const loginUser = async (email, password) => {
     try {
-        const res = await apiClient.post("Users/login", email,password);
-        return res.data;
+        const response = await apiClient.post(`Users/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+        return response.data; 
     } catch (error) {
+        console.error('Login error:', error);
         throw error;
     }
-}
+};
 
-export { getAllUsers, createUser, updateUser, deleteUser, getUserById }
+export { getAllUsers, createUser, updateUser, deleteUser, getUserById, loginUser }
