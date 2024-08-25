@@ -3,9 +3,9 @@ import React from 'react'
 const Products = () => {
   return (
     <div id='products'>
-        <div id='productsTitleBox'>
+        <div id='productsTitleBox' className='titleBox'>
           <div id='productsTitle'>
-              <h1>מוצרים מותאמים אישית</h1>
+              <div id='productsTitleH1'><h1>מוצרים מותאמים אישית</h1></div>
           </div>
         </div>
         <div id='productsContent'>

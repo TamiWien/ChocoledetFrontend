@@ -12,8 +12,8 @@ const Login = ({toggleSingUp}) => {
 
   const handleLogin = async () => {
     try {
-      await apiClient.post('Auth/Login', { email, password }); 
-      navigate('/dashboard'); 
+      await apiClient.post('Users/login', { email, password }); 
+      navigate('/store'); 
     } catch (err) {
       setError('שגיאת התחברות');
     }

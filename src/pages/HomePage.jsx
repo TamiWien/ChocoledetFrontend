@@ -7,6 +7,7 @@ import OurBox from '../components/homePageComponents/OurBox'
 import Recommend from '../components/homePageComponents/Recommend'
 import homespeedlow from '../assets/video/homespeedlow.mp4'
 import VideoTitle from '../components/homePageComponents/VideoTitle'
+import FAQContainer from '../components/homePageComponents/FAQContainer'
 
 const HomePage = () => {
 
@@ -34,7 +35,7 @@ const HomePage = () => {
         <div id='about'><About/></div>
         <div id='ourBox'><OurBox/></div>
         <div id='recommend'><Recommend/></div>
-        <div id='faq'><FAQ/></div>
+        <div id='faq'><FAQContainer/></div>
         <div id='gallery'><Gallery/></div>
         <div id='contact'><Contact/></div>
     </div>

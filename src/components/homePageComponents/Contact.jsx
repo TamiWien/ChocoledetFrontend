@@ -43,11 +43,19 @@ const Contact = () => {
 
   return (
     <div id='contact'>
-        <h1>צרו קשר לאירוע מתוק במיוחד</h1>
-        <div>
-        <form onSubmit={handleSubmit}>
-            <div className="form-row">
-                <div className="form-group">
+        <div id='contactRight'>
+            <h2>Sweet <br/> Home</h2>
+            <h1>הזמנת סדנאות</h1>
+        </div>
+        <div id='contactLeft'>
+            <div id='contactLeftText'>
+                <p>אירועים פרטיים / עסקיים המלווים בחוויה יוצאת דופן עם סדנת שוקולד מפנקת במיוחד ושלל קישוטים מתוקים ייחודיים. </p>
+                <p><b>אירועים פרטיים:</b> ימי הולדת, בר/בת מצווה, ימי נישואים, מפגשים משפחתיים, מסיבות רווקים/ות או כל אירוע פרטי אחר.</p>
+                <p><b>אירועים עסקיים:</b>  אירועי חברה, כנסים, ימי כיף וגיבוש, השקת מוצר, אירועי לקוחות ועוד.</p>
+            </div>
+            <h2>צרו קשר לאירוע מתוק במיוחד</h2>
+            <form id='form' onSubmit={handleSubmit}>
+                <div id='formFlex'>
                     <input
                         type="text"
                         id="fullName"
@@ -57,8 +65,6 @@ const Contact = () => {
                         placeholder="שם מלא:"
                         required
                     />
-                </div>
-                <div className="form-group">
                     <input
                         type="tel"
                         id="phone"
@@ -68,61 +74,57 @@ const Contact = () => {
                         placeholder="טלפון:"
                         required
                     />
-                </div>
-                <div className="form-group">
-                    <input
+                    {/* <input
                         type="email"
                         id="email"
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="אימייל:"
-                    />
+                    /> */}
                 </div>
-            </div>
-            <div className="form-row second-row">
-                <div className="form-group date">
-                    <label htmlFor="desiredDate">תאריך רצוי לסדנה:</label>
-                    <input
-                        type="date"
-                        id="desiredDate"
-                        name="desiredDate"
-                        value={desiredDate}
-                        onChange={(e) => setDesiredDate(e.target.value)}
-                        min={minDate}
-                        max={maxDate}
-                    />
+                <div id='formFlex'>
+                    <div>
+                        <label htmlFor="desiredDate">תאריך רצוי לסדנה:</label>
+                        <input
+                            type="date"
+                            id="desiredDate"
+                            name="desiredDate"
+                            value={desiredDate}
+                            onChange={(e) => setDesiredDate(e.target.value)}
+                            min={minDate}
+                            max={maxDate}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="quantity">כמות ערכות:</label>
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            value={quantity}
+                            onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+                            min="10"
+                            max="1000"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="kitType">סוג ערכה לבחירה:</label>
+                        <select
+                            id="kitType"
+                            name="kitType"
+                            value={kitType}
+                            onChange={(e) => setKitType(e.target.value)}
+                        >
+                            <option value="basic">ערכות בסיסיות</option>
+                            <option value="upgraded">ערכות משודרגות</option>
+                            <option value="premium">ערכות פרימיום - מומלץ!</option>
+                            <option value="custom">בהתאמה אישית (כתבו לנו על זה)</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="form-group quantity">
-                    <label htmlFor="quantity">כמות ערכות:</label>
-                    <input
-                        type="number"
-                        id="quantity"
-                        name="quantity"
-                        value={quantity}
-                        onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
-                        min="10"
-                        max="1000"
-                        required
-                    />
-                </div>
-                <div className="form-group kitType">
-                    <label htmlFor="kitType">סוג ערכה לבחירה:</label>
-                    <select
-                        id="kitType"
-                        name="kitType"
-                        value={kitType}
-                        onChange={(e) => setKitType(e.target.value)}
-                    >
-                        <option value="basic">ערכות בסיסיות</option>
-                        <option value="upgraded">ערכות משודרגות</option>
-                        <option value="premium">ערכות פרימיום - מומלץ!</option>
-                        <option value="custom">בהתאמה אישית (כתבו לנו על זה)</option>
-                    </select>
-                </div>
-            </div>
-            <div className="form-row">
-                <div className="form-group full-width">
+                <div id='formFlex'>
                     <textarea
                         id="additionalInfo"
                         name="additionalInfo"
@@ -130,10 +132,9 @@ const Contact = () => {
                         onChange={(e) => setAdditionalInfo(e.target.value)}
                         placeholder="משהו נוסף? כתבו לנו כאן..."
                     />
-                </div>
-            </div>
-            <button type="submit">שלח</button>
-        </form>
+                </div>  
+                <button type="submit">שלח</button>
+            </form>
         </div>
     </div>
   )

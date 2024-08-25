@@ -7,7 +7,7 @@ const Layout = () => {
  
     return (
       <div id='layout'>
-        <Menu/>
+        <Menu id='up'/>
         <Outlet />
         <Footer />
       </div>

@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
-import ScrollToTop from './ScrollToTop'
-import { FaBabyCarriage } from 'react-icons/fa';
+import { FaBabyCarriage, FaChevronCircleUp } from 'react-icons/fa';
 import { GoHeart } from 'react-icons/go';
 import { PiShoppingCartSimple, PiUser } from 'react-icons/pi';
 import SignUp from './SignUp';
 import { IoCloseOutline } from 'react-icons/io5';
+import ScrollToTop from './ScrollToTop';
 
 const Menu = () => {
   const secendMenuRef = useRef(null);
@@ -34,12 +34,26 @@ const Menu = () => {
   
     const renderLink = (to, text) => {
       if (location.pathname === '/') {
-        return <a href={to} className={'menuLink'}>{text}</a>;
+        return <a href={to} className={'menuLink'} onClick={scrollToSection}>{text}</a>;
       } else {
-        return <NavLink to={to} className={'menuLink'}>{text}</NavLink>;
+        return <NavLink to={to} className={'menuLink'} onClick={scrollToSection}>{text}</NavLink>;
       }
     };
     // פונקציה מטפלת בגלילה למקום בעמוד מתוכו ומחוצה לו - סוף
+
+    const scrollToSection = () => {
+      const section = document.getElementById("mySection");
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    const handleClick = () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  };
 
     const menuUp = () => {
         if (secendMenuRef.current) {
@@ -64,10 +78,10 @@ const Menu = () => {
   return (
     <div id='menuBox'>
         <div id='menu'>
-          <div id='menuLogo'><NavLink to="/"><img className='logoImg' src={logo} alt='logoImg' /></NavLink></div>
+          <div id='menuLogo'><NavLink to="/" onClick={handleClick}><img className='logoImg' src={logo} alt='logoImg' /></NavLink></div>
           <div id='menuLinks'>
             {renderLink("/#about", "אודות")}
-            {renderLink("/#ourBox", "הערכה שלנו")}
+            {renderLink("/#ourBox", "מה בערכה?")}
             {renderLink("/#recommends", "המלצות")}
             {renderLink("/#gallery", "גלריה")}
             {renderLink("/#faq", "שאלות נפוצות")}
@@ -121,7 +135,8 @@ const Menu = () => {
           </div>
         </div>
         } 
-      <ScrollToTop />
+      <NavLink to="#up" id='toUp' onClick={handleClick}><FaChevronCircleUp /></NavLink>
+      <ScrollToTop/>
     </div>
   )
 }

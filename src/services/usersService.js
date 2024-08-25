@@ -1,6 +1,5 @@
 import { apiClient } from "../api/apiClient";
 
-// Fetch all users
 const getAllUsers = async () => {
     try {
         const res = await apiClient.get("Users");
@@ -10,7 +9,6 @@ const getAllUsers = async () => {
     }
 }
 
-// Fetch a user by ID
 const getUserById = async (userId) => {
     try {
         const res = await apiClient.get(`Users/${userId}`);
@@ -20,7 +18,6 @@ const getUserById = async (userId) => {
     }
 }
 
-// Create a new user
 const createUser = async (newUser) => {
     try {
         const res = await apiClient.post("Users", newUser);
@@ -30,7 +27,6 @@ const createUser = async (newUser) => {
     }
 }
 
-// Update an existing user
 const updateUser = async (userId, userToUpdate) => {
     try {
         const res = await apiClient.put(`Users/${userId}`, userToUpdate);
@@ -40,10 +36,18 @@ const updateUser = async (userId, userToUpdate) => {
     }
 }
 
-// Delete a user
 const deleteUser = async (userId) => {
     try {
         await apiClient.delete(`Users/${userId}`);
+    } catch (error) {
+        throw error;
+    }
+}
+
+const loginUser = async (email,password) => {
+    try {
+        const res = await apiClient.post("Users/login", email,password);
+        return res.data;
     } catch (error) {
         throw error;
     }

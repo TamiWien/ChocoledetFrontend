@@ -31,32 +31,25 @@ const Footer = () => {
     <div >
         <div id='Footer'>
           <NavLink className='navFooter' to="/"><img className='logoImgFooter' src={logo} alt='logoImg'></img></NavLink>
-          <div id='navMenuFooter'>
-            <div id='footerLinks'>
-              {renderLink("/#about", "אודות")}
-              {renderLink("/#ourBox", "הערכה שלנו")}
-              {renderLink("/#recommends", "המלצות")}
-              {renderLink("/#gallery", "גלריה")}
-              {renderLink("/#faq", "שאלות נפוצות")}
-              {renderLink("/#contact", "הזמינו סדנה")}
-              <NavLink to="/store" className='footerLink'>שוקולדת ליולדת</NavLink>
-              <NavLink to="/contactUs" className='footerLink'>צרו קשר</NavLink>
+          <div className='navFooter footerLinks'>
+            <h3>סדנת שוקולדת</h3>
+            {renderLink("/#about", "אודות")}
+            {renderLink("/#ourBox", "מה בערכה?")}
+            {renderLink("/#recommends", "המלצות")}
+            {renderLink("/#gallery", "גלריה")}
+            {renderLink("/#faq", "שאלות נפוצות")}
+            {renderLink("/#contact", "הזמינו סדנה")}
           </div>
+          <div className='navFooter'>
+              <h3>שוקולדת ליולדת</h3>
+              <NavLink to="/store" className='footerLink'>חנות</NavLink>
+              <NavLink to="/store/products" className='footerLink'>מוצרים מותאמים אישית</NavLink>
+              <NavLink to="/store/packages" className='footerLink'>מארזים ייחודיים ליולדות</NavLink>
           </div>
-          <div className='navMenuFooter'>
-            <div id='loginContainer'>
-                  <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleLogin}><FaUserCircle/></NavLink>
-                  <div id='loginUser'>{loginUser}</div>
-                </div>
-                {isLoginVisible && <Login />}
-              <div className='socialMedia'>
-              </div>
-                <div id='join'>JOIN US!</div>
-                <div id='comp'>
-                  <label className="abel">Email *</label>
-                  <input name="email" type="email" id="email" />
-                  <button className="email-button">Send</button>
-                </div>
+          <div className='navFooter'>
+              <NavLink to="/contactUs"><h3>צרו קשר</h3></NavLink>
+              <a href="mailto:chocoledet@gmail.com" className='footerLinkContact'>chocoledet@gmail.com</a>
+              <a href="tel:+tel:055-2100704" className='footerLinkContact'>055-2100704</a>
           </div>
       </div>
       <div id='by'>Tamar Wienet & Hadassa Sabag</div>

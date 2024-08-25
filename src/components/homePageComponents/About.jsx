@@ -2,6 +2,8 @@ import React from 'react'
 import homesplash from '../../assets/images/homesplash.svg'
 import logoMin from '../../assets/images/logoMin.svg'
 import { FaChildReaching } from 'react-icons/fa6'
+import { LuBike } from 'react-icons/lu'
+import { FaPuzzlePiece, FaRegClock } from 'react-icons/fa'
 
 const About = () => {
   return (
@@ -26,15 +28,20 @@ const About = () => {
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2>גילאים</h2>
-                    <FaChildReaching/>
                 </div>
                 <p>99 – 6</p>
+            </div>
+            <div className='aboutInfoBack'>
+                <FaChildReaching/>
             </div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2>משלוחים</h2>
                 </div>
                 <p>הערכות נשלחות אליכם עד הבית</p>
+            </div>
+            <div className='aboutInfoBack'>
+                <LuBike/>
             </div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
@@ -43,11 +50,17 @@ const About = () => {
                 <p>עד שבוע לפני האירוע
                 מומלץ להזמין חודש מראש</p>
             </div>
+            <div className='aboutInfoBack'>
+                <FaRegClock/>
+            </div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
-                    <h2>מינימום הזמנה</h2>
+                    <h2 className='elseMargin'>מינימום הזמנה</h2>
                 </div>
                 <p>10 ערכות</p>
+            </div>
+            <div className='aboutInfoBack'>
+                <FaPuzzlePiece/>
             </div>
         </div>
     </div>
