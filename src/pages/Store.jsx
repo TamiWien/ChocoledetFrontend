@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import getAllProducts from '../services/products';
 import cPackages from '../assets/images/cPackages.jpg';
 import cProducts from '../assets/images/cProducts.jpg';
 import { NavLink } from 'react-router-dom';

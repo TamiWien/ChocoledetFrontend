@@ -12,7 +12,7 @@ import { getAllUsers, loginUser } from '../services/usersService';
 const Menu = () => {
   const secendMenuRef = useRef(null);
   const loginUpRef = useRef(null);
-  const [loginUserName, setLoginUserrName] = useState('התחבר');///////////////////////we are here
+  const [loginUserName, setLoginUserrName] = useState('התחבר');
   const [isSignUpVisible, setSignUpVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,31 +25,16 @@ const Menu = () => {
 
   const fetchData = async () => {
     try {
-      console.log('Fetched נכנסתי:', users);
         const users = await getAllUsers();
-        console.log('Fetched users:', users); // הדפסת המשתמשים שהתקבלו
         setuserList(users);
     } catch (error) {
-        console.error('Error fetching users:', error); // הדפסת השגיאה עם פרטים
+        console.error('Error fetching users:', error);
     }
 };
 
 useEffect(() => {
     fetchData();
 }, []);
-
-  // const fetchData = async () =>{
-  //   try {
-  //     const users = await getAllUsers();
-  //     setuserList(users);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  //   }
-
-  // useEffect (() =>{
-  //   fetchData()
-  // },[] )
 
   const handleLogin = async () => {
     try {
@@ -62,10 +47,10 @@ useEffect(() => {
         if (response === "Login successful") {
           console.log("נכנסתי");
           console.log("userList:" + userList);
-            const user = userList.find(u => u.Email === email);
+            const user = userList.find(u => u.email === email);
             console.log(user);
             if (user) {
-                setLoginUserrName(user.UserName); // עדכון שם המשתמש
+                setLoginUserrName(user.userName); // עדכון שם המשתמש
             }
             setIsOpen(!isOpen);
             navigate('/store');
@@ -156,8 +141,9 @@ useEffect(() => {
                   <NavLink to="/store"><PiShoppingCartSimple/></NavLink>
                 </div>
                 <div id='loginContainer' className='menuIcon'>
-                  <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/></NavLink>
-                  <div id='loginUser'>{loginUserName}</div>
+                  <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/>
+                    <div id='loginUser'>{loginUserName}</div>
+                  </NavLink>
                 </div>
             </div>
           </div>

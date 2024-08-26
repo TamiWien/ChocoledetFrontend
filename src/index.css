@@ -180,12 +180,12 @@ button:hover {
 }
 
 #loginUpBtn{
-  height: 25px;
+  height: 50px;
 }
 
 #loginUser{
   font-size: 14px;
-  line-height: 26px;
+  line-height: 2px;
   text-align: center;
   align-content: start;
 }
@@ -702,17 +702,6 @@ button:hover {
   font-size:14px;
 }
 
-/* .faq-answer {
-  padding: 23px 41px;
-    font-size: 17px;
-    color: #7A7A7A;
-    line-height: 25px;
-}
-
-.faq-item.active .faq-answer {
-  display: block;
-} */
-
 .faq-answer {
   padding: 23px 41px;
     font-size: 17px;
@@ -897,7 +886,10 @@ textarea {
   justify-content: space-around;
 }
 
-#contactUsForm input[type="text"], input[type="tel"], input[type="email"],textarea {
+#contactUsForm input[type="text"],
+#contactUsForm input[type="tel"],
+#contactUsForm input[type="email"],
+#contactUsContainer textarea {
   width: 30%;
   border: solid 1px #545454;
   box-shadow: 5px 4px 0px 0px #c0a4874f;
