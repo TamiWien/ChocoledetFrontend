@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import Users from "./components/Users";
 import SuccessSignUp from "./pages/SuccessSignUp";
+import Cart from "./pages/Cart";
 
 
 const router = createBrowserRouter([
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
             ]},
         {path: "/contactUs", element: <ContactUs/>},
         {path: "/successSignup", element: <SuccessSignUp/>},
+        {path: "/cart", element: <Cart/>},
         {path: "*", element: <NotFound/>},
     ]}
 ]);

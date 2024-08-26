@@ -138,7 +138,7 @@ useEffect(() => {
                   <NavLink to="/store"><GoHeart/></NavLink>
                 </div>
                 <div className='menuIcon'>
-                  <NavLink to="/store"><PiShoppingCartSimple/></NavLink>
+                  <NavLink to="/cart"><PiShoppingCartSimple/></NavLink>
                 </div>
                 <div id='loginContainer' className='menuIcon'>
                   <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/>

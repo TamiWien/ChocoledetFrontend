@@ -37,7 +37,7 @@ h1{
   text-align: center;
 }
 
-button {
+/* button* {
   color: #ffffff;
     height: 58px;
     cursor: pointer;
@@ -51,7 +51,7 @@ button {
 
 button:hover {
   background-color: #4a1f0a;
-}
+} */
 
 /***************************************/
 #darkBody{
@@ -907,8 +907,21 @@ padding: 2%;
     height: 43px;
 }
 
-#contactUsContainer button {
+#contactUs button {
   width: 100%;
+  color: #ffffff;
+    height: 58px;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 600;
+    border: solid;
+    box-shadow: 5px 4px 0px 0px #c0a4874f;
+    border-radius: 50px;
+    background-color: #5c2c0c;
+}
+
+#contactUs button:hover {
+  background-color: #4a1f0a;
 }
 
 /***************************************/
@@ -1038,12 +1051,13 @@ padding: 2%;
 }
 
 #productsContent{
-  width: 100%;
-  min-height: 500px;
-  background-image: url('./assets/images/babyBG.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 96%;
+    min-height: 500px;
+    background-image: url(/src/assets/images/babyBG.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5% 2%;
 }
 
 #productsBox{
@@ -1055,7 +1069,7 @@ padding: 2%;
 .productBox{
   width: 19%;
     float: right;
-    margin: 2%;
+    margin: 0% 2% 0% 2%;
     height: 373px;
     border: none;
 }
@@ -1063,16 +1077,29 @@ padding: 2%;
 .productBoxIn{
     height: 293px;
     padding: 7px;
-    /* background: #fff; */
     border: none;
     text-align: center;
-    /* box-shadow: 0px 0px 8px rgb(130 107 92 / 33%); */
 }
 
 .productBoxIn:hover{
   height: 373px;
-  /* background: #fff; */
   .productBtns{ display: block;}
+}
+
+.productBtnsInput{
+  display: flex;
+  border: solid 1px #555;
+}
+
+.productBtnsInput input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.productBtnsInput input[type="number"]::-webkit-inner-spin-button,
+.productBtnsInput input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .productImg{
@@ -1095,15 +1122,33 @@ padding: 2%;
 }
 
 .productQuantity{
-  width: 90%;
+  width: 80%;
   background-color: #ffffff;
-  border: solid 1px #555;
   height: 40px;
   text-align: center;
+  border: none;
+  font-size: 20px;
+}
+
+.quantityInput{
+  background-color: #ffffff00;
+  border: none;
+  border-radius: 0%;
+  float: left;
+  width: 10%;
+  font-size: 32px;
+  line-height: 33px;
+  margin: 0px 8px 0px 8px;
+  font-weight: 200;
+  font-family: fangsong;
+}
+
+.left{
+  margin-bottom: 2px;
 }
 
 .addToCartBtn{
-  width: 90%;
+  width: 100%;
   background-color: #d4c0ad;
   border: none;
   height: 40px;
@@ -1138,16 +1183,138 @@ padding: 2%;
 }
 
 #packagesContent{
-  width: 100%;
+  width: 96%;
   min-height: 500px;
   background-image: url('./assets/images/babyBG.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 5% 2%;
 }
 
 
 /***************************************/
+
+.boxContant {
+  width: 100%;
+  min-height: 100%;
+}
+#myCart {
+  width: 100%;
+}
+
+.contant{
+  width: 100%;
+  min-height: 952px;
+  display: flex;
+}
+
+.quantityInput{
+  width: 20px;
+  height: 25px;
+  border: none;
+  line-height: 23px;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.quantityInputX{
+  border: none;
+    cursor: pointer;
+    margin-top: -3px;
+    background-color: #fff;
+    color: #848484;
+    font-size: 12px;
+}
+
+#quantityInputBox{
+  width: 71px;
+    height: 26px;
+    border: solid 1px #747474;
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 23px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#productDataCart{
+  width: 30%;
+  height: 100%;
+}
+
+.contant h4{
+  color: #4b4b4b;
+    font-size: 26px;
+    font-weight: 100;
+    line-height: 0px;
+    margin: 80px;
+}
+
+.contant .h5 {
+  color: #4b4b4b;
+    font-size: 18px;
+    text-align: left;
+    font-weight: 100;
+    margin: 0px 0px 12px 0px;
+    border: none;
+    padding: 0px;
+}
+
+#productCart{
+  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+#myCartContant{
+  display: flex;
+    justify-content: space-evenly;
+    margin: 15px 0px 15px 0px;
+}
+
+#productImgCart{
+  width: 13%;
+    height: 100%;
+}
+
+.itemDataCart {
+  width: -moz-fit-content;
+  text-align: left;
+  font-weight: 100;
+  font-size: 88%;
+  line-height: 119%;
+  margin-top: 8px;
+}
+
+#orderSummary{
+  width: 25%;
+    background-color: #ede4db57;
+    padding: 0px 16px;
+}
+
+
+#checkoutButton:hover{
+  background-color: #b2895f;
+}
+
+#checkoutButton {
+  width: 100%;
+  max-width: 360px;
+  height: 40px;
+  background-color: #a8815a;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  font-weight: 100;
+  line-height: 40px;
+  margin: 20px 0px 20px 0px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+/***************************************/
+
 
 /* SignUp.css */
 .signup-container {
