@@ -804,13 +804,13 @@ label {
   font-weight: 400;
 }
 
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-select,
-textarea {
+#contact input[type="text"],
+#contact input[type="tel"],
+#contact input[type="email"],
+#contact input[type="date"],
+#contact input[type="number"],
+#contact select,
+#contact textarea {
   padding: 10px;
   border: none;
   box-shadow: 5px 4px 0px 0px #c0a4874f;
@@ -822,8 +822,8 @@ textarea {
   border-radius: 100px;
 }
 
-input[type="text"],
-input[type="tel"]{
+#contact input[type="text"],
+#contact input[type="tel"]{
   width: 50%;
 }
 
@@ -891,15 +891,20 @@ textarea {
 #contactUsForm input[type="email"],
 #contactUsContainer textarea {
   width: 30%;
-  border: solid 1px #545454;
-  box-shadow: 5px 4px 0px 0px #c0a4874f;
-  color: #545454;
-  border-radius: 34px;
+height: 25px;
+border: solid 1px #545454;
+box-shadow: 5px 4px 0px 0px #c0a4874f;
+color: #545454;
+border-radius: 34px;
+direction: rtl;
+font-size: 17px;
+padding: 2%;
 }
 
 #contactUsContainer textarea {
-  width: 97%;
-  margin: 16px 0px;
+  width: 96%;
+    margin: 16px 0px;
+    height: 43px;
 }
 
 #contactUsContainer button {
@@ -1040,6 +1045,78 @@ textarea {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#productsBox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.productBox{
+  width: 19%;
+    float: right;
+    margin: 2%;
+    height: 373px;
+    border: none;
+}
+
+.productBoxIn{
+    height: 293px;
+    padding: 7px;
+    /* background: #fff; */
+    border: none;
+    text-align: center;
+    /* box-shadow: 0px 0px 8px rgb(130 107 92 / 33%); */
+}
+
+.productBoxIn:hover{
+  height: 373px;
+  /* background: #fff; */
+  .productBtns{ display: block;}
+}
+
+.productImg{
+  width: 90%;
+}
+
+.productName{
+  font-size: 17px;
+}
+
+.productBtns{
+  display: none;
+} 
+
+.productPrice{
+  font-size: 22px;
+  line-height: 46px;
+  color: #a58c74;
+  font-weight: 300;
+}
+
+.productQuantity{
+  width: 90%;
+  background-color: #ffffff;
+  border: solid 1px #555;
+  height: 40px;
+  text-align: center;
+}
+
+.addToCartBtn{
+  width: 90%;
+  background-color: #d4c0ad;
+  border: none;
+  height: 40px;
+  text-align: center;
+  box-shadow: none;
+  border-radius: inherit;
+  margin-top: 8px;
+}
+
+.addToCartBtn:hover{
+  background-color: #bea690;
+}
+
 
 /***************************************/
 
