@@ -38,15 +38,8 @@ useEffect(() => {
 
   const handleLogin = async () => {
     try {
-        console.log('before Email:', email);
-        console.log('before Password:', password);
-
         const response = await loginUser(email, password);
-        console.log('Server response:', response);
-
         if (response === "Login successful") {
-          console.log("נכנסתי");
-          console.log("userList:" + userList);
             const user = userList.find(u => u.email === email);
             console.log(user);
             if (user) {
@@ -157,18 +150,18 @@ useEffect(() => {
             <h2>התחברות</h2>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="אימייל"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder="סיסמה"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             {error && <p className="error-message">{error}</p>}
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin}>התחבר</button>
           </div>
           }
           <p>עוד לא הצטרפתם לקהילה שלנו? בואו להיות חלק &gt;&gt; <NavLink onClick={toggleSignUp}><b>הירשמו כאן</b></NavLink></p>

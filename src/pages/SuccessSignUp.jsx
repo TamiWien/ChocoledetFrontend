@@ -1,13 +1,18 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Store from './Store'
 
-const SuccessSignUp = () => {
+const SuccessSignUp = ({ isVisible }) => {
+  
+  const handleLinkClick = () => {
+    window.location.reload(); // טוען מחדש את כל הדף
+  };
+
   return (
-    <div>
-        <p id='successSignUp'>איזה כיף! נרשמת בהצלחה</p>
-        <NavLink to='/Store'>שנתחיל להזמין? כנס לחנות</NavLink>
-        <p></p>
+    <div id='successSignUp' className={`successSignUp ${isVisible ? 'visible' : 'hidden'}`}>
+        <h3 >איזה כיף! נרשמת בהצלחה</h3>
+        <p>שנתחיל להזמין?</p>
+        
+        <p><NavLink to='/Store' onClick={handleLinkClick}>כנס לחנות</NavLink></p>
     </div>
   )
 }

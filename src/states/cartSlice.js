@@ -34,7 +34,7 @@ const cartSlice = createSlice(
             setRemoveFromCart: (state, action) => {
                 const indexToRemove = state.arr.findIndex(p => p.item.productName === action.payload.productName);
                 if (indexToRemove !== -1) {
-                    state.sum -= state.arr[indexToRemove].item.Price * state.arr[indexToRemove].quantity;
+                    state.sum -= state.arr[indexToRemove].item.price * state.arr[indexToRemove].quantity;
                     state.arr.splice(indexToRemove, 1);
                     state.count = state.arr.reduce(
                         (total, currentItem) => total + currentItem.quantity,
