@@ -16,7 +16,7 @@ const SignUp = ({setIsOpen}) => {
     try {
       console.log('Start sign up process');
     await createUser({ userName, email, password });
-    dispatch(setLoginUser({ userId, userName, email, password }));
+    dispatch(setLoginUser( userName, email, password ));
     console.log('User created, navigating to success page');
     setIsVisible(!isVisible);
   } catch (err) {

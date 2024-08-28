@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cards from 'react-credit-cards-2'; 
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { createOrder } from '../services/ordersService';
+import { useSelector } from 'react-redux';
+import { selectUserId } from '../states/userSlice';
 
-function CreditCardForm({ totalAmount = 0, orderItems }) {
+function CreditCardForm({ totalAmount }) {
 
-  console.log("totalAmount:" +totalAmount);
-  console.log("orderItems:" +orderItems);
   const [cardNumber, setCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [name, setName] = useState('');
   const [focus, setFocus] = useState('');
+  const userId = useSelector(selectUserId);
+
+  console.log(userId);
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim());
@@ -24,42 +27,52 @@ function CreditCardForm({ totalAmount = 0, orderItems }) {
     setCvv(e.target.value.replace(/[^\d]/g, '').replace(/(.{3})/, '$1').trim());
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   alert('Your purchase has been successful!');
-  // };
+  const location = useLocation();
+
+  const orderItemsArray = location.state?.orderItemsArray || [];  // קבלת הנתונים דרך location
+
+   console.log('orderItemsArray:', orderItemsArray);
+   console.log('totalAmount:', totalAmount);
+
+  //const orderItemsArrayJson = JSON.stringify(orderItemsArray);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     const orderData = {
-      userId,paymentStatus: true,totalAmount,orderItems
+      userId: userId,
+      paymentStatus: true,
+      totalAmount: totalAmount,
+      orderItemsArray: orderItemsArray, // לוודא שזה המערך ולא מחרוזת
     };
   
-    console.log('orderData:', orderData);
-
+    console.log('Order data before sending:', JSON.stringify(orderData, null, 2));
+  
     try {
-      console.log('orderData:', orderData);
-      // קריאה לפונקציה שמבצעת את יצירת ההזמנה
       const orderId = await createOrder(orderData);
       console.log('Order created with ID:', orderId);
-  
-      // ניווט לדף תודה לאחר ההצלחה
       navigate('/thanks');
     } catch (error) {
       console.error('Error creating order:', error);
     }
   };
   
-//   const handleCreateOrder = async (orderData) => {
-//     try {
-//         const orderId = await createOrder(orderData);
-//         console.log('Order created with ID:', orderId);
-//     } catch (error) {
-//         console.error('Error creating order:', error);
-//     }
-// };
-
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault(); 
+  //   const orderData = {
+  //     userId:userId,paymentStatus: true,totalAmount:totalAmount,orderItemsArray:orderItemsArrayJson
+  //   };
+  //   console.log('orderData:', orderData);
+  //   try {
+  //     console.log('orderData:', orderData);
+  //     // קריאה לפונקציה שמבצעת את יצירת ההזמנה
+  //     const orderId = await createOrder(orderData);
+  //     console.log('Order created with ID:', orderId);
+  //     navigate('/thanks');
+  //   } catch (error) {
+  //     console.error('Error creating order:', error);
+  //   }
+  // };
 
 
   return (
@@ -127,7 +140,8 @@ function CreditCardForm({ totalAmount = 0, orderItems }) {
             required
           />
         </div>
-        <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>שלם</button></Link>
+        <button type="submit" id='checkoutButton'onClick={handleSubmit}>שלם</button>
+        {/* <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>שלם</button></Link> */}
       </form>
     </div>
   );

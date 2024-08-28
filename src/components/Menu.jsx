@@ -8,6 +8,8 @@ import SignUp from './SignUp';
 import { IoCloseOutline } from 'react-icons/io5';
 import ScrollToTop from './ScrollToTop';
 import { getAllUsers, loginUser } from '../services/usersService';
+import { setLoginUser } from '../states/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Menu = () => {
   const secendMenuRef = useRef(null);
@@ -22,7 +24,7 @@ const Menu = () => {
   const [userList, setUserList] = useState([]);
   const [userId, setUserId] = useState({});
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
 
   const fetchData = async () => {
     try {
@@ -44,10 +46,11 @@ useEffect(() => {
             console.log(user);
             if (user) {
                 setLoginUserrName(user.userName);
+                dispatch(setLoginUser({ userId: user.userId, userName: user.userName, email: user.email, password: user.password }));
             }
             setIsOpen(!isOpen);
             console.log(user);
-            setUserId(user.userId);//כאן מכניסים יוזראיידי במקום יוזר שלם
+            setUserId(user.userId);
             navigate('/store');
         } else if (response === "Invalid email") {
             setError('אופפס עדיין לא נרשמת');

@@ -18,7 +18,7 @@ const userSlice = createSlice({
       state.userName = userName;
       state.email = email;
       state.password = password;
-      console.log(userId, userName, email, password);
+      console.log(action.payload.userId, action.payload.userName, action.payload.email, action.payload.password);
     },
 
     setLogoutUser: (state) => {
@@ -31,8 +31,8 @@ const userSlice = createSlice({
 });
 
 export const { setLoginUser, setLogoutUser } = userSlice.actions;
-export const userIdSlice = (state) => state.userIdSlice.userId;
-export const userNameSlice = (state) => state.userNameSlice.userName;
-export const emailSlice = (state) => state.emailSlice.email;
-export const passwordSlice = (state) => state.passwordSlice.password;
+export const selectUserId = (state) => state.user.userId;
+export const selectUserName = (state) => state.user.userName;
+export const selectEmail = (state) => state.user.email;
+export const selectPassword = (state) => state.user.password;
 export default userSlice.reducer;
