@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CountryDropdown } from 'react-country-region-selector';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import CreditCardForm from './CreditCardForm';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toCart, toCartSum } from '../states/cartSlice';
+import { userIdSlice } from '../states/userSlice';
 
-const Checkout = () => {
+const Checkout = ( ) => {
     const [country, setCountry] = useState('');
     const [showComponent, setShowComponent] = useState(false);
     const arrCart = useSelector(toCart)
@@ -15,6 +16,26 @@ const Checkout = () => {
     setCountry(val);
   };
 
+  const location = useLocation();
+  const { orderItemsArray } = location.state || {};
+  console.log(orderItemsArray);
+    
+//   const [userConected, setUserConected] = useState([]);
+ 
+//   const fetchData = async () => {
+//       try {
+//           const user = await getUserById(userId);
+//           setUserConected(user);  
+//           console.log("user PersonalArea:" + userId);
+//           console.log("user.orders:", user.orders);
+//     } catch (error) {
+//         console.error('Error fetching users:', error);
+//     }
+// };
+
+// useEffect(() => {
+//     fetchData();
+// },  [userId]);
 
   return (
     <div id='checkoutContant'>
@@ -78,7 +99,7 @@ const Checkout = () => {
           <h4 className='h4'></h4>
           <p className='h5'>סה"כ<p className='left'>₪{(sumCart + 40).toLocaleString()}</p></p>
         </div>
-        {showComponent ? <CreditCardForm /> : null}
+        {showComponent ? <CreditCardForm totalAmount = {sumCart}  orderItems = {orderItemsArray} /> : null}
       </div>
     </div>
   )

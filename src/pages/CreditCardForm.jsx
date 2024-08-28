@@ -4,7 +4,10 @@ import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { Link } from 'react-router-dom';
 import { createOrder } from '../services/ordersService';
 
-function CreditCardForm() {
+function CreditCardForm({ totalAmount = 0, orderItems }) {
+
+  console.log("totalAmount:" +totalAmount);
+  console.log("orderItems:" +orderItems);
   const [cardNumber, setCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCvv] = useState('');
@@ -14,29 +17,49 @@ function CreditCardForm() {
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim());
   };
-
   const handleExpirationDateChange = (e) => {
     setExpirationDate(e.target.value.replace(/[^\d]/g, '').replace(/(\d{2})(\d{0,4})/, '$1/$2').trim());
   };
-
   const handleCvvChange = (e) => {
     setCvv(e.target.value.replace(/[^\d]/g, '').replace(/(.{3})/, '$1').trim());
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert('Your purchase has been successful!');
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   alert('Your purchase has been successful!');
+  // };
 
-  const handleCreateOrder = async (orderData) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    const orderData = {
+      userId,paymentStatus: true,totalAmount,orderItems
+    };
+  
+    console.log('orderData:', orderData);
+
     try {
-        const orderId = await createOrder(orderData);
-        console.log('Order created with ID:', orderId);
-        // תוכל לעדכן את מצב הקומפוננטה או לבצע פעולות נוספות
+      console.log('orderData:', orderData);
+      // קריאה לפונקציה שמבצעת את יצירת ההזמנה
+      const orderId = await createOrder(orderData);
+      console.log('Order created with ID:', orderId);
+  
+      // ניווט לדף תודה לאחר ההצלחה
+      navigate('/thanks');
     } catch (error) {
-        console.error('Error creating order:', error);
+      console.error('Error creating order:', error);
     }
-};
+  };
+  
+//   const handleCreateOrder = async (orderData) => {
+//     try {
+//         const orderId = await createOrder(orderData);
+//         console.log('Order created with ID:', orderId);
+//     } catch (error) {
+//         console.error('Error creating order:', error);
+//     }
+// };
+
 
 
   return (
@@ -104,7 +127,7 @@ function CreditCardForm() {
             required
           />
         </div>
-        <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>קנה עכשיו</button></Link>
+        <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>שלם</button></Link>
       </form>
     </div>
   );

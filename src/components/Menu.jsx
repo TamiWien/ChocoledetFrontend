@@ -104,7 +104,7 @@ useEffect(() => {
     const toggleClose = () => {
       console.log(userId);
       if(loginUserName != 'התחבר')
-        navigate('../personalArea', { state: {userId} }); //כאן אפשר להעביר איידי ולא יוזר שלם. אחכ נקרא לפונקצית יוזר לפי איידי כי רק היא מביאה את ההזמנות
+        navigate('../personalArea', { state: {userId} });
       else setIsOpen (!isOpen)
     }
 

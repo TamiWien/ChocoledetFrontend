@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createUser } from '../services/usersService';
+import { setLoginUser } from '../states/userSlice';
 
 const SignUp = ({setIsOpen}) => {
   const [userName, setUserName] = useState('');
@@ -15,6 +16,7 @@ const SignUp = ({setIsOpen}) => {
     try {
       console.log('Start sign up process');
     await createUser({ userName, email, password });
+    dispatch(setLoginUser({ userId, userName, email, password }));
     console.log('User created, navigating to success page');
     setIsVisible(!isVisible);
   } catch (err) {

@@ -47,6 +47,17 @@ const Cart = () => {
     }
 };
 
+    const createOrderItemsArray = () => {
+      return arrCart.map(p => ({
+        productId: p.item.productId,
+        quantity: p.quantity
+      }));
+    };
+
+    const orderItemsArray = createOrderItemsArray();
+
+    console.log(JSON.stringify(orderItemsArray));
+
   return (
     <div className='boxContant'>
       <div className='contant'>
@@ -81,7 +92,7 @@ const Cart = () => {
           <p className='h5'>משלוח:<p className='left'>₪40</p> </p>
           <h4 className='h4'></h4>
           <p className='h5'>סה"כ<p className='left'>₪{(sumCart + 40).toLocaleString()}</p></p>
-          <Link to={sumCart> 0 ? '/checkout' : ''}><button id='checkoutButton' >לתשלום</button></Link>
+          <Link to={sumCart> 0 ? '/checkout'  : ''} state={ orderItemsArray }><button id='checkoutButton' >לתשלום</button></Link>
         </div>
       </div>
     </div>
