@@ -19,19 +19,19 @@ const Menu = () => {
   const [error, setError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [userList, setuserList] = useState([]);
+  const [userList, setUserList] = useState([]);
+  const [userId, setUserId] = useState({});
   const navigate = useNavigate();
 
 
   const fetchData = async () => {
     try {
         const users = await getAllUsers();
-        setuserList(users);
+        setUserList(users);
     } catch (error) {
         console.error('Error fetching users:', error);
     }
 };
-
 useEffect(() => {
     fetchData();
 }, []);
@@ -43,9 +43,11 @@ useEffect(() => {
             const user = userList.find(u => u.email === email);
             console.log(user);
             if (user) {
-                setLoginUserrName(user.userName); // עדכון שם המשתמש
+                setLoginUserrName(user.userName);
             }
             setIsOpen(!isOpen);
+            console.log(user);
+            setUserId(user.userId);//כאן מכניסים יוזראיידי במקום יוזר שלם
             navigate('/store');
         } else if (response === "Invalid email") {
             setError('אופפס עדיין לא נרשמת');
@@ -100,7 +102,10 @@ useEffect(() => {
     }
   
     const toggleClose = () => {
-      setIsOpen (!isOpen)
+      console.log(userId);
+      if(loginUserName != 'התחבר')
+        navigate('../personalArea', { state: {userId} }); //כאן אפשר להעביר איידי ולא יוזר שלם. אחכ נקרא לפונקצית יוזר לפי איידי כי רק היא מביאה את ההזמנות
+      else setIsOpen (!isOpen)
     }
 
     const toggleSignUp = () => {
@@ -134,9 +139,9 @@ useEffect(() => {
                   <NavLink to="/cart"><PiShoppingCartSimple/></NavLink>
                 </div>
                 <div id='loginContainer' className='menuIcon'>
-                  <NavLink ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/>
+                  <div ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/>
                     <div id='loginUser'>{loginUserName}</div>
-                  </NavLink>
+                  </div>
                 </div>
             </div>
           </div>
@@ -164,7 +169,7 @@ useEffect(() => {
             <button onClick={handleLogin}>התחבר</button>
           </div>
           }
-          <p>עוד לא הצטרפתם לקהילה שלנו? בואו להיות חלק &gt;&gt; <NavLink onClick={toggleSignUp}><b>הירשמו כאן</b></NavLink></p>
+          <p>עוד לא נרשמת? זה הזמן &gt;&gt; <NavLink onClick={toggleSignUp}><b>הירשמו כאן</b></NavLink></p>
           {isSignUpVisible && <SignUp setIsOpen={setIsOpen}/>}
           </div>
         </div>

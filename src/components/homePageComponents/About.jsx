@@ -6,9 +6,14 @@ import { LuBike } from 'react-icons/lu'
 import { FaPuzzlePiece, FaRegClock } from 'react-icons/fa'
 
 const About = () => {
+    
   return (
     <div id='about'>
-        <h1>סדנה להכנת בתים משוקולד</h1>
+        <div id='aboutTitleH1Box'>
+            <div id='aboutTitleH1'>
+                <h1>סדנה להכנת בתים משוקולד</h1>
+            </div>
+        </div>
         <div>
             <div id='aboutLeft'>
                 <img id='homesplash' src={homesplash} alt='homesplashimg' />

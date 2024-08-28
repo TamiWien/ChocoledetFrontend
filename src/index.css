@@ -177,6 +177,7 @@ button:hover {
 #loginContainer{
   display: grid;
   align-content: center;
+  cursor: pointer;
 }
 
 #loginUpBtn{
@@ -302,7 +303,7 @@ button:hover {
   background-attachment: fixed;
 }
 
-
+/* 
 @keyframes slideInFromBottom {
   0% {
       transform: translateY(50px);
@@ -312,15 +313,29 @@ button:hover {
       transform: translateY(0);
       opacity: 1;
   }
+} */
+
+/* #aboutTitleH1Box{
+  height: 147px;
+} */
+
+#aboutTitleH1{
+  height: 128px;
+  overflow: hidden;
 }
 
+@keyframes slideUpAbout {
+  from {
+    margin-top: 113px;
+  }
+  to {
+    margin-top: 54px;
+  }
+}
 #about h1 {
   color: #5c2c0c;
-  margin-top: 30px;
-  line-height: 100px;
-  opacity: 0; 
-  transform: translateY(50px); 
-  animation: slideInFromBottom 1s ease-out forwards; 
+  margin-top: 54px;
+  animation: slideUpAbout 1.8s ease-out;
 }
 
 #aboutLeft{
@@ -562,19 +577,22 @@ button:hover {
 
 #gallery{
   width: 100%;
-  height: 500px;
+  overflow: hidden;
+}
+
+#gallery h1{
+  margin: 25px 0px;
+
 }
 
 .gallery-container {
   position: relative;
-  height: 300px; /* קבע את הגובה שאתה רוצה */
   overflow: hidden;
 }
 
 .gallery-wrapper {
   display: flex;
   overflow: hidden;
-  height: 100%;
 }
 
 .gallery-images {
@@ -583,7 +601,7 @@ button:hover {
 }
 
 .gallery-image {
-  min-width: 20vw; /* גובה התמונה הוא 1/5 מהמסך */
+  width: 25%;
   height: 100%;
   flex-shrink: 0;
 }
@@ -596,22 +614,25 @@ button:hover {
 
 .gallery-button {
   position: absolute;
-    top: 50%;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 1;
-    width: 38px;
-    height: 38px;
-    margin: 0px 2% 0px 2%;
-    line-height: 0px;
-    background-color: #4a1f0a4f;
-    box-shadow: 0px 0px 3px 0px #a9a9a9;
+  top: 50%;
+  color: #919191;
+  border: solid 1px #cecece;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1;
+  width: 38px;
+  font-size: 18px;
+  height: 38px;
+  font-weight: 900;
+  margin: 0px 2% 0px 2%;
+  border-radius: 100px;
+  line-height: 0px;
+  background-color: #ffffffa5;
+  box-shadow: 0px 0px 3px 0px #a9a9a9;
 }
 
 .gallery-button:hover {
-  background-color: #4a1f0a8c;
+  background-color: #ffffffd7;
 }
 
 .gallery-button.prev {
@@ -635,36 +656,14 @@ button:hover {
 }
 
 .gallery-indicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   color: #333;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 5px 10px;
-  border-radius: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin: 9px;
+    text-align: center;
 }
 
 /***************************************/
-/* @keyframes slideInFromBottom {
-  0% {
-      transform: translateY(50px);
-      opacity: 0;
-  }
-  100% {
-      transform: translateY(0);
-      opacity: 1;
-  }
-}
-
-#about h1 {
-  color: #5c2c0c;
-  margin-top: 30px;
-  line-height: 100px;
-  opacity: 0; 
-  transform: translateY(50px); 
-  animation: slideInFromBottom 1s ease-out forwards; 
-} */
 
 #faq{
   width: 100%;
@@ -1035,7 +1034,7 @@ padding: 2%;
 #productsTitleBox{
   background-image: url('./assets/images/products.webp');
 }
-
+/* 
 @keyframes slideUp {
   from {
     height: 5px;
@@ -1043,7 +1042,7 @@ padding: 2%;
   to {
     height: 67px;
   }
-}
+} */
 
 #productsTitleH1{
   height: 67px;
@@ -1348,12 +1347,36 @@ padding: 2%;
 /***************************************/
 /* checkout */
 
+#checkoutContant{
+  width: 100%;
+  min-height: 952px;
+  display: flex;
+}
+
 #checkoutRight{
   width: 50%;
 }
 
 #checkoutLeft{
   width: 33%;
+}
+
+#checkoutContant h4{
+  color: #4b4b4b;
+  font-size: 26px;
+  font-weight: 100;
+  line-height: 58px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgb(17 17 17 / 15%);
+}
+
+#checkoutContant .h5 {
+  color: #4b4b4b;
+    font-size: 18px;
+    margin: 0px 0px 12px 0px;
+    border: none;
+    padding: 0px;
+    font-weight: 300;
 }
 
 #checkoutLeft .quantityInputBox{
@@ -1404,7 +1427,7 @@ padding: 2%;
     text-decoration: underline;
 }
 
-input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" i]) {
+#checkoutContant input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" i]) {
   width: 50%;
   padding: 8px;
   margin-bottom: 10px;
@@ -1413,7 +1436,7 @@ input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" 
   float: left;
 }
 
-select:not(:-internal-list-box) {
+#checkoutContant select:not(:-internal-list-box) {
   width: 43%;
   padding: 8px;
   margin-bottom: 10px;
@@ -1422,7 +1445,7 @@ select:not(:-internal-list-box) {
   float: right;
 }
 
-select {
+#checkoutContant select {
   width: 43%;
   padding: 8px;
   margin-bottom: 10px;
@@ -1431,9 +1454,9 @@ select {
   float: right;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+#checkoutContant input[type="text"],
+#checkoutContant input[type="email"],
+#checkoutContant textarea {
   width: 95%;
   padding: 8px;
   margin-bottom: 10px;
@@ -1441,7 +1464,7 @@ textarea {
   border-radius: 4px;
 }
 
-input[type="submit"] {
+#checkoutContant input[type="submit"] {
   background-color: #a8815a;
   color: white;
   padding: 10px 15px;
@@ -1453,7 +1476,7 @@ input[type="submit"] {
   font-weight: 100;
 }
 
-input[type="submit"]:hover {
+#checkoutContant input[type="submit"]:hover {
   background-color: #7d5a37;
 }
 
@@ -1469,6 +1492,45 @@ input[type="submit"]:hover {
   margin: 7% 0%;
 }
 
+/***************************************/
+/* personalArea*/
+#personalArea{
+  padding: 3% 17%;
+}
+
+#personalArea h1{
+  padding: 3% 0%;
+}
+
+#customerDetails{
+  background-color: linen;
+  padding: 4%;
+}
+
+#orders{
+  background-color: #ffffff;
+}
+
+.order {
+  border: 1px solid rgb(204, 204, 204);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.item{
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.detailsItem{
+  float: right;
+    width: 18%;
+}
+
+.detailsItemImg{
+  width: 30px;
+}
 
 /***************************************/
 
@@ -1542,9 +1604,6 @@ input[type="submit"]:hover {
   margin: 27px 0;
 }
 
-.signup-container button:hover {
-}
-
 .error-message {
   color: red;
   text-align: center;
@@ -1616,9 +1675,6 @@ input[type="submit"]:hover {
   background-color: #4a1f0a;
 } 
 
-.login-container button:hover {
-}
-
 .error-message {
   color: red;
   text-align: center;
@@ -1627,9 +1683,55 @@ input[type="submit"]:hover {
 /***************************************/
 
 #notFound{
-  background-color: rgb(85, 33, 47);
   width: 100%;
-  height: 500px;
+}
+
+#p404{
+  background-image: url('./assets/images/babyBG.png');
+  background-position: center;
+  background-size: cover;
+  height: fit-content;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#p404 h1 {
+  text-align: center;
+  font-size: 706%;
+  background-color: #ede4db00;
+  margin: auto;
+  text-shadow: 0 0 6px #ffffff;
+  padding: 0px;
+}
+
+#p404 h2 {
+  margin: 0px auto 30px auto;
+    font-size: 40px;
+    text-align: center;
+}
+
+#p404 h3 {
+  color: #664b2f;
+  font-size: 21px;
+  text-align: center;
+  font-weight: 400;
+  width: 72%;
+  margin: 3% auto;
+  border-radius: 8px;
+}
+
+#goBack404 {
+  display: block;
+  width: 12%;
+  height: 40px;
+  line-height: 40px;
+  color: #a8815a;
+  text-align: center;
+  margin: auto;
+}
+
+.bold{
+  font-weight: 600;
 }
 
 /***************************************/

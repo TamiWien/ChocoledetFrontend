@@ -17,7 +17,7 @@ const Checkout = () => {
 
 
   return (
-    <div className='contant'>
+    <div id='checkoutContant'>
         <div id='checkoutRight'><form action="#" method="POST" className='formChack'>
             <h4>פרטי לקוח</h4>           
               <label for="email"  className='labelChack'>אימייל לקבלת פרטי הזמנה *</label><br/>

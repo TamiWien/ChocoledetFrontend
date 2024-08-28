@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2'; 
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { Link } from 'react-router-dom';
+import { createOrder } from '../services/ordersService';
 
 function CreditCardForm() {
   const [cardNumber, setCardNumber] = useState('');
@@ -26,6 +27,17 @@ function CreditCardForm() {
     event.preventDefault();
     alert('Your purchase has been successful!');
   };
+
+  const handleCreateOrder = async (orderData) => {
+    try {
+        const orderId = await createOrder(orderData);
+        console.log('Order created with ID:', orderId);
+        // תוכל לעדכן את מצב הקומפוננטה או לבצע פעולות נוספות
+    } catch (error) {
+        console.error('Error creating order:', error);
+    }
+};
+
 
   return (
     <div className="credit-card-form">
@@ -92,7 +104,7 @@ function CreditCardForm() {
             required
           />
         </div>
-        <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>Buy Now</button></Link>
+        <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>קנה עכשיו</button></Link>
       </form>
     </div>
   );

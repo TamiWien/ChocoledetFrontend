@@ -16,6 +16,7 @@ import SuccessSignUp from "./pages/SuccessSignUp";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Thanks from "./pages/Thanks";
+import PersonalArea from "./pages/PersonalArea";
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
             ]},
         {path: "/contactUs", element: <ContactUs/>},
         {path: "/successSignup", element: <SuccessSignUp/>},
+        {path: "/personalArea", element: <PersonalArea/>},
         {path: "/cart", element: <Cart/>},
         {path: "/checkout", element: <Checkout/>},
         {path: "/thanks", element: <Thanks/>},
