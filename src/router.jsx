@@ -17,6 +17,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Thanks from "./pages/Thanks";
 import PersonalArea from "./pages/PersonalArea";
+import WishList from "./pages/WishList";
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
         {path: "/contactUs", element: <ContactUs/>},
         {path: "/successSignup", element: <SuccessSignUp/>},
         {path: "/personalArea", element: <PersonalArea/>},
+        {path: "/wishlist", element: <WishList/>},
         {path: "/cart", element: <Cart/>},
         {path: "/checkout", element: <Checkout/>},
         {path: "/thanks", element: <Thanks/>},

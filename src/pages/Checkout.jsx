@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { CountryDropdown } from 'react-country-region-selector';
 import { Link, useLocation } from 'react-router-dom'
 import CreditCardForm from './CreditCardForm';
@@ -31,6 +31,7 @@ const Checkout = () => {
     
     const handleCheckout = () => {
         setShowComponent(true);
+        console.log(orderItemsArrayAndTotalAmount);
         navigate('/creditCardForm', { state: { orderItemsArray: orderItemsArrayAndTotalAmount} });
         // navigate('/creditCardForm', { state: { orderItemsArray: orderItemsArrayAndTotalAmount, totalAmount: sumCart } });
     };

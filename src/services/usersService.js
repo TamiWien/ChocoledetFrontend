@@ -40,6 +40,7 @@ const updateUser = async (userId, userToUpdate) => {
 const deleteUser = async (userId) => {
     try {
         await apiClient.delete(`Users/${userId}`);
+        console.log("עובד");
     } catch (error) {
         throw error;
     }

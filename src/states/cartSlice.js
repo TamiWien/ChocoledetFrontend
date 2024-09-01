@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     sum: 0,
     count: 0,
-    arr: []
+    arr: [],
+    countWishList: 0,
+    arrWishList: []
 }
 const cartSlice = createSlice(
     {
@@ -12,7 +14,7 @@ const cartSlice = createSlice(
         reducers:{
             setAddToCart: (state, action) =>{
                 const { item, quantity } = action.payload;
-                const isItemInCart = state.arr.findIndex(p => p.item.productName === item.productName); 
+                const isItemInCart = state.arr.findIndex(p => p.item.productId === item.productId); 
 
                 if (isItemInCart !== -1) {
                     state.arr[isItemInCart].quantity += quantity;
@@ -29,7 +31,19 @@ const cartSlice = createSlice(
                     0
                   );
             },
-            setCount: () => {
+            setAddToWishList: (state, action) => {
+                const item = action.payload.item;
+                const isItemInWishList = state.arrWishList.find(p => p.item.productId === item.productId);
+    
+                if (isItemInWishList) {
+                    state.arrWishList = state.arrWishList.filter(p => p.item.productId !== item.productId);
+                    state.countWishList--;
+                    console.log("alredy here" + item.productId);
+                } else {
+                    state.arrWishList.push({ item }); 
+                    state.countWishList++;
+                    console.log(item);
+                }
             },
             setRemoveFromCart: (state, action) => {
                 const indexToRemove = state.arr.findIndex(p => p.item.productName === action.payload.productName);
@@ -46,8 +60,10 @@ const cartSlice = createSlice(
     }
 )
 
-export const {setAddToCart, setCount, setRemoveFromCart} = cartSlice.actions;
+export const {setAddToCart, setRemoveFromCart, setAddToWishList} = cartSlice.actions;
 export const toCart = (state) => state.toCart.arr;
 export const toCartSum = (state) => state.toCart.sum;
 export const toCartCount = (state) => state.toCart.count;
+export const toWishList = (state) => state.toCart.arrWishList;
+export const toWishListCount = (state) => state.toCart.countWishList;
 export default cartSlice.reducer;

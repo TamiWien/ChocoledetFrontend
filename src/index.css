@@ -143,6 +143,11 @@ button:hover {
 #secondMenuNB{
   height: 70px;
   align-content: center;
+  color: #5c2c0c;
+}
+
+#secondMenuNB path{
+  color: #5c2c0c;
 }
 
 .secondMenuLinks{
@@ -174,10 +179,25 @@ button:hover {
   text-align: center;
 }
 
+#countCart{
+  background-color: #ffffff;
+  width: 15px;
+  height: 15px;
+  border-radius: 100px;
+  text-align: center;
+  line-height: 15px;
+  margin: -21px 4px 0px 0px;
+  font-size: 13px;
+  border: solid 1.5px #b18050;
+  position: absolute;
+  color: #888;
+}
+
 #loginContainer{
   display: grid;
   align-content: center;
   cursor: pointer;
+  color: #5c2c0c;
 }
 
 #loginUpBtn{
@@ -366,13 +386,19 @@ button:hover {
     line-height: 24px;
 }
 
+#aboutBtn:hover{
+  color: #fff;
+  background-color: #5c2c0c;
+  border: solid 2px #fff;
+}
+
 #aboutBtn{
   width: 189px;
     height: 50px;
     background-color: #ffffff;
     cursor: pointer;
     display: block;
-    line-height: 50px;
+    line-height: 45px;
     text-align: center;
     font-size: 19px;
     font-weight: 700;
@@ -415,6 +441,10 @@ button:hover {
   margin: 40px 0px 10px 0px !important;
 }
 
+.aboutInfoBack:hover{
+    font-size: 153px;
+}
+
 .aboutInfoBack{
   position: relative;
     line-height: 33px;
@@ -439,6 +469,11 @@ button:hover {
 #ourBoxContainer{
   display: flex;
   flex-direction: row;
+}
+
+#ourBox h1{
+  text-align: right;
+  margin: 10px 23% -20px 0px;
 }
 
 #ourBoxText{
@@ -472,7 +507,7 @@ button:hover {
 }
 
 .itemIcon svg:hover{
-  color: #5c2c0c;
+  color: #0c5d1f;
 }
 
 
@@ -517,6 +552,7 @@ button:hover {
 }
 
 /***************************************/
+/* homePage - recommends */
 
 #recommends{
   width: 100%;
@@ -574,6 +610,138 @@ button:hover {
 }
 
 /***************************************/
+/* homePage - boxes */
+
+#boxes{
+  width: 100%;
+  /* height: 500px; */
+  padding: 4% 0%;
+  position: relative;
+    overflow: hidden;
+}
+
+/* #boxes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./assets/images/recommends.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+} */
+
+#boxesBoxes{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  margin-top: 30px;
+}
+
+.boxesBox{
+  width: 30%;
+    float: right;
+    margin: 10px;
+    text-align: center;
+    background-color: #ffffffb3;
+    box-shadow: 0px 0px 5px 0px #7c7c7c;
+}
+
+.bigIconBox{
+  width: 66px;
+    height: 66px;
+    align-content: center;
+    border: solid 5px #dcbf92;
+    border-radius: 100px;
+    color: #dcbf92;
+    margin: 19px auto 0px auto;
+    padding: 22px;
+}
+
+.bigIcon{
+  font-size: 58px;
+  line-height: 60px;
+}
+
+.colorBigIcon2{
+  color:#c79446;
+  border: solid 5px #c79446;
+}
+
+.colorBigIcon3{
+  color:#a0804d;
+  border: solid 5px #a0804d;
+}
+
+.boxesBox h2{
+  color: #5c2c0c;
+  line-height: 56px;
+}
+
+.boxesBox p{
+  margin: 0px 28px 16px 28px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 14px;
+}
+
+.boxesBoxName{
+  padding: 28px;
+    text-align: right;
+    border-top: solid 1px #dedede;
+    border-bottom: solid 1px #dedede;
+    font-size: 13px;
+    font-weight: 300;
+    color: #696969;
+}
+
+.br{
+  color: #c2c2c2;
+    text-align: center;
+    width: 30%;
+    margin: 12px auto 6px auto;
+    border-bottom: solid 1px #c2c2c2;
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
+
+.boxesBoxName svg{
+  font-size: 13px;
+    margin: 6px 0px -3px 3px;
+}
+
+.boxesBoxName p{
+  margin: 0px;
+    line-height: 14px;
+}
+
+.boxesBox button:hover{
+  background-color: #fff;
+  color: #5c2c0c;
+}
+
+.boxesBox button{
+  width: 100%;
+  height: 50px;
+  background-color: #5c2c0c;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/***************************************/
+/* homePage - gallery */
 
 #gallery{
   width: 100%;
@@ -664,6 +832,7 @@ button:hover {
 }
 
 /***************************************/
+/* homePage - FAQ */
 
 #faq{
   width: 100%;
@@ -714,20 +883,21 @@ button:hover {
     font-size: 17px;
     color: #7A7A7A;
     line-height: 25px;
-  max-height: 0; /* חבוי ברירת מחדל */
+  max-height: 0;
   overflow: hidden;
-  padding: 0 15px; /* מרווח פנימי */
-  transition: max-height 0.3s ease-out; /* אנימציה על שינוי הגובה */
+  padding: 0 15px; 
+  transition: max-height 0.3s ease-out; 
   white-space: pre-line;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 500px; /* גובה מקסימלי שמתאים לתוכן */
-  padding: 15px; /* חידוש המילוי כאשר התשובה פתוחה */
+  max-height: 500px; 
+  padding: 15px; 
 }
 
 
 /***************************************/
+/* homePage - contact */
 
 #contact{
   width: 100%;
@@ -806,7 +976,7 @@ button:hover {
   flex-wrap: nowrap;
 }
 
-label {
+#contact label {
   display: block;
   font-weight: 400;
 }
@@ -820,7 +990,7 @@ label {
 #contact textarea {
   padding: 10px;
   border: none;
-  box-shadow: 5px 4px 0px 0px #c0a4874f;
+  /* box-shadow: 5px 4px 0px 0px #c0a4874f; */
   height: 35px;
   font-size: 17px;
   direction: rtl;
@@ -835,7 +1005,7 @@ label {
 }
 
 #kitType{
-    height: 60px;
+  height: 55px !important;
 }
 
 textarea {
@@ -859,7 +1029,7 @@ textarea {
 }
 
 /***************************************/
-
+/* contactUs */
 
 #contactUs{
   padding: 5%;
@@ -932,6 +1102,7 @@ padding: 2%;
 }
 
 /***************************************/
+/* store */
 
 #storeTitleBox{
   background-image: url('./assets/images/store.jpg');
@@ -981,13 +1152,12 @@ padding: 2%;
   background-color: #fff;
   float: right;
   border: solid 3px #dfd1bb;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: margin 1.5s ease-in-out;
 }
 
 .storeCategorys:hover{
   margin: -95px 4.5% 0px 4.5%;
-  box-shadow: 0 0 10px rgb(0 0 0 / 37%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .categoryImg{
@@ -1021,6 +1191,7 @@ padding: 2%;
 }
 
 /***************************************/
+/* products */
 
 .titleBox{
   width: 100%;
@@ -1092,6 +1263,18 @@ padding: 2%;
 .productBoxIn:hover{
   min-height: 330px;
   .productBtns{ display: block;}
+}
+
+.addToWishlistBtn{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  color: #db77a1;
+  font-size: 23px;
+  margin-right: 14%;
+  margin-top: 6px;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .productImgBox{
@@ -1175,6 +1358,7 @@ padding: 2%;
   border-radius: inherit;
   margin-top: 8px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .addToCartBtn:hover{
@@ -1183,6 +1367,7 @@ padding: 2%;
 
 
 /***************************************/
+/* packages */
 
 #packagesTitleBox{
   background-image: url('./assets/images/packages.jpg');
@@ -1211,8 +1396,76 @@ padding: 2%;
   padding: 5% 2%;
 }
 
+/***************************************/
+/* wishlist */
+
+#wishlist .titleBox {
+  width: 100%;
+  height: 220px;
+  background-image: url(/src/assets/images/wishlist.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#wishlist h1{
+  color: #d04c81;
+}
+
+#wishlistTitle {
+  width: 100%;
+  height: 220px;
+  background-color: #ffffff8c;
+  align-content: center;
+}
+#wishlistTitleH1 {
+  height: 67px;
+  overflow: hidden;
+  animation: slideUp 0.8s ease-in-out;
+}
+#wishlistContent {
+  width: 96%;
+  min-height: 500px;
+  padding: 5% 2%;
+}
+#wishlistProductsBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wishlistProductBox {
+  width: 19%;
+  float: right;
+  margin: 0% 2% 0% 2%;
+  height: 373px;
+  border: none;
+}
+.wishlistProductBoxIn {
+  min-height: 250px;
+  padding: 7px;
+  text-align: center;
+}
+.wishlistProductImgBox {
+  width: 100%;
+  height: 180px;
+  content-visibility: auto;
+}
+.wishlistProductImg {
+  width: 70%;
+}
+.wishlistProductName {
+  font-size: 17px;
+}
+.wishlistProductPrice {
+  font-size: 22px;
+  line-height: 46px;
+  color: #a58c74;
+  font-weight: 300;
+}
 
 /***************************************/
+/* cart */
 
 .boxContant {
   width: 100%;
@@ -1413,7 +1666,7 @@ padding: 2%;
 }
 
 #checkoutButton {
-  margin: 4%;
+  margin: 4% 0%;
   cursor: pointer;
 }
 
@@ -1494,20 +1747,73 @@ padding: 2%;
 
 /***************************************/
 /* personalArea*/
+
 #personalArea{
   padding: 3% 17%;
+  font-weight: 300;
 }
 
 #personalArea h1{
   padding: 3% 0%;
+  color: #af7f35;
 }
 
 #customerDetails{
-  background-color: linen;
+  background-color: #eeeeee;
   padding: 4%;
 }
 
+#customerDetailsName{
+  width: 100%;
+  display: flow-root;
+}
+
+#customerDetailsName h2{
+  width: 90%;
+  float: right;
+}
+
+#personalArea h2{
+  font-weight: 200;
+  font-size: 30px;
+  color: #565656;
+  border-bottom: solid 1px #ababab;
+}
+
+.deleteUser{
+  float: left;
+    font-size: 13px;
+    color: #565656;
+}
+
+.deleteUser svg{
+  margin: 0px 2px -3px 0px;
+  font-size: 16px;
+  color: #999;
+}
+
+#orders h2 {
+  margin-bottom: 20px;
+}
+
+#orders h3 {
+  line-height: 41px;
+  font-weight: 300;
+}
+
+#userIcon{
+  float: left;
+  font-size: 41px;
+  color: #c79446;
+}
+
+.customerDate{
+  color: #999;
+    margin: -10px 0px 20px 0px;
+}
+
 #orders{
+  padding: 4%;
   background-color: #ffffff;
 }
 
@@ -1517,15 +1823,115 @@ padding: 2%;
   padding: 10px;
 }
 
-.item{
+.order .item{
   display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
 
+.field {
+  line-height: 27px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+#personalArea label {
+  display: block;
+  font-weight: 300;
+}
+
+#personalArea span {
+  min-width: 155px;
+    padding: 2px 14px;
+    margin: 0px 7px 6px 7px;
+    display: inline-block;
+    background-color: #f6f6f6;
+}
+
+#personalArea input {
+  min-width: 155px;
+  padding: 2px 14px;
+  margin: 0px 7px 6px 7px;
+  display: inline-block;
+  background-color: #f6f6f6;
+  border: none;
+  height: 29px;
+  font-size: 17px;
+  font-weight: 300;
+  box-shadow: inset 0 0 5px #a7a7a7;
+}
+
+.field svg {
+  margin-right: -32px;
+  padding-right: 2px;
+  z-index: 3;
+  position: relative;
+  color: #9d9d9d;
+  margin-bottom: -3px;
+  border-right: solid 1px #c2c2c2;
+  cursor: pointer;
+}
+
+.detailsIcons svg{
+  float: right;
+  margin: 7px 0px 0px 10px;
+  border-right: none;
+  color: #9d9d9d;
+  cursor: default;
+  font-size: 17px;
+}
+
+.fail{
+  margin: 0px 28px 0px 0px;
+  font-size: 18px;
+  border-right: none;
+}
+
+.password{
+  -webkit-text-security: disc !important;
+}
+
+.field button {
+    border: none;
+}
+
+#noCangeDetails{
+}
+
+.change{
+  line-height: 27px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.noChange{
+  line-height: 30px;
+  font-weight: 300;
+  font-size: 17px;
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.noChangeIn{
+  margin-right: 10px;
+}
+
 .detailsItem{
   float: right;
-    width: 18%;
+    width: 20%;
+    border-bottom: inset;
+    align-content: center;
+}
+
+.detailsItemTitle{
+  float: right;
+    width: 20%;
+    border-bottom: inset;
+    align-content: center;
+    background-color: #eeeeee;
+    font-weight: 500;
 }
 
 .detailsItemImg{
@@ -1737,7 +2143,7 @@ padding: 2%;
 /***************************************/
 
 
-#Footer{
+#footer{
   width: 100%;
   height: 350px;
   background-color: #76685a;
@@ -1758,24 +2164,24 @@ padding: 2%;
   margin: 10px 0px;
 }
 
+.navFooter svg{
+  margin: 0px 0px -3px 3px;
+}
+
 .logoImgFooter{
   width: 50%;
+}
+
+.footerLink:hover{
+  color: #fff;
+  font-weight: 400;
 }
 
 .footerLink{
   width: 100%;
   display: block;
   text-align: right;
-  color: #ffffffa3;;
-  font-weight: 300;
-  line-height: 30px;
-}
-
-.footerLinkContact{
-  width: 100%;
-  display: block;
-  text-align: right;
-  color: #ffffffa3;;
+  color: #ffffffa3;
   font-weight: 300;
   line-height: 30px;
 }

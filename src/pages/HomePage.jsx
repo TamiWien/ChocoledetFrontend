@@ -8,6 +8,7 @@ import Recommend from '../components/homePageComponents/Recommend'
 import homespeedlow from '../assets/video/homespeedlow.mp4'
 import VideoTitle from '../components/homePageComponents/VideoTitle'
 import FAQContainer from '../components/homePageComponents/FAQContainer'
+import Boxes from '../components/homePageComponents/Boxes'
 
 const HomePage = () => {
 
@@ -35,6 +36,7 @@ const HomePage = () => {
         <div id='about'><About/></div>
         <div id='ourBox'><OurBox/></div>
         <div id='recommend'><Recommend/></div>
+        <div id='recommend'><Boxes/></div>
         <div id='faq'><FAQContainer/></div>
         <div id='gallery'><Gallery/></div>
         <div id='contact'><Contact/></div>

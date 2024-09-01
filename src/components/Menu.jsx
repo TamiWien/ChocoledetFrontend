@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
 import { FaBabyCarriage, FaChevronCircleUp } from 'react-icons/fa';
-import { GoHeart } from 'react-icons/go';
+import { GoHeart, GoHeartFill } from 'react-icons/go';
 import { PiShoppingCartSimple, PiUser } from 'react-icons/pi';
 import SignUp from './SignUp';
 import { IoCloseOutline } from 'react-icons/io5';
 import ScrollToTop from './ScrollToTop';
 import { getAllUsers, loginUser } from '../services/usersService';
 import { setLoginUser } from '../states/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toCartCount, toWishListCount } from '../states/cartSlice';
 
 const Menu = () => {
   const secendMenuRef = useRef(null);
@@ -23,6 +24,8 @@ const Menu = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [userList, setUserList] = useState([]);
   const [userId, setUserId] = useState({});
+  const countCart = useSelector(toCartCount);
+  const countWishList = useSelector(toWishListCount);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -136,10 +139,15 @@ useEffect(() => {
             <NavLink to="/contactUs" className={'menuLink'}>צרו קשר</NavLink>
             <div id='menuIcons'>
                 <div className='menuIcon'>
-                  <NavLink to="/store"><GoHeart/></NavLink>
+                  <NavLink to="/wishlist">
+                    {countWishList>0 && <GoHeartFill/>}
+                    {countWishList<=0 && <GoHeart/>}
+                  </NavLink>
                 </div>
                 <div className='menuIcon'>
-                  <NavLink to="/cart"><PiShoppingCartSimple/></NavLink>
+                  <NavLink to="/cart"><PiShoppingCartSimple/>
+                    {countCart>0 && <div id='countCart'>{countCart}</div>}
+                  </NavLink>
                 </div>
                 <div id='loginContainer' className='menuIcon'>
                   <div ref={loginUpRef} id='loginUpBtn' onClick={toggleClose}><PiUser/>

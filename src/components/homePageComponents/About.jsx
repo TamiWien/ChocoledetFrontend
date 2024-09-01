@@ -4,6 +4,7 @@ import logoMin from '../../assets/images/logoMin.svg'
 import { FaChildReaching } from 'react-icons/fa6'
 import { LuBike } from 'react-icons/lu'
 import { FaPuzzlePiece, FaRegClock } from 'react-icons/fa'
+import { NavLink } from 'react-router-dom'
 
 const About = () => {
     
@@ -26,7 +27,7 @@ const About = () => {
                 עם כל האביזרים לבניית בתים מתוקים במיוחד<br/>
                 עשויים משוקולד משובח ומקושטים, באווירה טובה עם כל החברים<br/>
                 </p>
-                <botton id='aboutBtn'>להזמנת אירוע</botton>
+                <a href="#contact"><button id='aboutBtn'>להזמנת אירוע</button></a>
             </div>
         </div>
         <div id='aboutInfo'>
@@ -36,18 +37,14 @@ const About = () => {
                 </div>
                 <p>99 – 6</p>
             </div>
-            <div className='aboutInfoBack'>
-                <FaChildReaching/>
-            </div>
+            <div className='aboutInfoBack'><FaChildReaching/></div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2>משלוחים</h2>
                 </div>
                 <p>הערכות נשלחות אליכם עד הבית</p>
             </div>
-            <div className='aboutInfoBack'>
-                <LuBike/>
-            </div>
+            <div className='aboutInfoBack'><LuBike/></div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2>הזמנות</h2>
@@ -55,18 +52,14 @@ const About = () => {
                 <p>עד שבוע לפני האירוע
                 מומלץ להזמין חודש מראש</p>
             </div>
-            <div className='aboutInfoBack'>
-                <FaRegClock/>
-            </div>
+            <div className='aboutInfoBack'><FaRegClock/></div>
             <div className='aboutInfo'>
                 <div className='aboutInfoTitle'>
                     <h2 className='elseMargin'>מינימום הזמנה</h2>
                 </div>
                 <p>10 ערכות</p>
             </div>
-            <div className='aboutInfoBack'>
-                <FaPuzzlePiece/>
-            </div>
+            <div className='aboutInfoBack'><FaPuzzlePiece/></div>
         </div>
     </div>
   )

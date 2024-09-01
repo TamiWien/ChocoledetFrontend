@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getProducts } from '../services/productsService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAddToCart, toCart, toCartCount, toCartSum, setRemoveFromCart } from '../states/cartSlice';
+import WishListButton from '../components/WishListButton';
 
 const Packages = () => {
   const [productList, setProductList] = useState([]);
@@ -69,6 +70,9 @@ const Packages = () => {
           {productList.filter(p => p.categoryId === 1).map((p) => (
             <div className='productBox' key={p.productId}>
               <div className='productBoxIn'>
+                <div className='addToWishlistBtn'>
+                    <WishListButton item={p} />
+                </div>
                 <div className='productImgBox'><img className='productImg' src={p.imagePath} alt={p.productName} /></div>
                 <div className='productName'>{p.productName}</div>
                 <div className='productPrice'>₪{p.price}</div>

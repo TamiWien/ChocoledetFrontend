@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
-import { FaUserCircle } from 'react-icons/fa';
-import ScrollToTop from './ScrollToTop';
+import { MdEmail, MdOutlineMail } from 'react-icons/md';
+import { FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
   const loginUpRef = useRef(null);
@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <div >
-        <div id='Footer'>
+        <div id='footer'>
           <NavLink className='navFooter' to="/"><img className='logoImgFooter' src={logo} alt='logoImg'></img></NavLink>
           <div className='navFooter footerLinks'>
             <h3>סדנת שוקולדת</h3>
@@ -48,8 +48,8 @@ const Footer = () => {
           </div>
           <div className='navFooter'>
               <NavLink to="/contactUs"><h3>צרו קשר</h3></NavLink>
-              <a href="mailto:chocoledet@gmail.com" className='footerLinkContact'>chocoledet@gmail.com</a>
-              <a href="tel:+tel:055-2100704" className='footerLinkContact'>055-2100704</a>
+              <a href="mailto:chocoledet@gmail.com" className='footerLink'> <MdEmail /> chocoledet@gmail.com</a>
+              <a href="tel:+tel:055-2100704" className='footerLink'> <FaPhone /> 055-2100704</a>
           </div>
       </div>
       <div id='by'>Tamar Wienet & Hadassa Sabag</div>

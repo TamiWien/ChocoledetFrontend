@@ -5,22 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 const Store = () => {
 
-  // const fetchData = async () =>{
-
-  //   const [productsList, setProductsList] = useState([]);
-
-  //   try {
-  //     const products = await getAllProducts();
-  //     setProductsList(products);
-  //   } catch (error) {
-  //     console.log(error.massage);
-  //   }
-  // }
-
-  // useEffect (() =>{
-  //   fetchData()
-  // },[] )
-
   return (
       <div>
         <div id='storeTitleBox' className='titleBox'>
@@ -49,9 +33,6 @@ const Store = () => {
             <h2>מוצרים מותאמים אישית</h2>
             <p>בחרו את המוצרים האהובים עבור היולדת שלכם ונכין לה מארז מפנק שאי אפשר להישאר אדיש מולו</p>
           </div></NavLink>
-        </div>
-        <div id='storeContent'>
-            <button>כל המוצרים</button>
         </div>
     </div>
       

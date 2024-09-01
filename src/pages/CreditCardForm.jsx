@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2'; 
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { createOrder } from '../services/ordersService';
 import { useSelector } from 'react-redux';
 import { selectUserId } from '../states/userSlice';
@@ -34,47 +34,25 @@ function CreditCardForm({ totalAmount }) {
    console.log('orderItemsArray:', orderItemsArray);
    console.log('totalAmount:', totalAmount);
 
-  //const orderItemsArrayJson = JSON.stringify(orderItemsArray);
-
   const handleSubmit = async (event) => {
-    event.preventDefault();
-  
+    event.preventDefault();  
     const orderData = {
       userId: userId,
       paymentStatus: true,
       totalAmount: totalAmount,
-      orderItemsArray: orderItemsArray, // לוודא שזה המערך ולא מחרוזת
+      orderItems: orderItemsArray,
     };
   
     console.log('Order data before sending:', JSON.stringify(orderData, null, 2));
   
     try {
       const orderId = await createOrder(orderData);
-      console.log('Order created with ID:', orderId);
       navigate('/thanks');
     } catch (error) {
       console.error('Error creating order:', error);
     }
   };
   
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault(); 
-  //   const orderData = {
-  //     userId:userId,paymentStatus: true,totalAmount:totalAmount,orderItemsArray:orderItemsArrayJson
-  //   };
-  //   console.log('orderData:', orderData);
-  //   try {
-  //     console.log('orderData:', orderData);
-  //     // קריאה לפונקציה שמבצעת את יצירת ההזמנה
-  //     const orderId = await createOrder(orderData);
-  //     console.log('Order created with ID:', orderId);
-  //     navigate('/thanks');
-  //   } catch (error) {
-  //     console.error('Error creating order:', error);
-  //   }
-  // };
-
-
   return (
     <div className="credit-card-form">
       <Cards
@@ -86,7 +64,6 @@ function CreditCardForm({ totalAmount }) {
       />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {/* <label htmlFor="cardNumber">Card Number:</label> */}
           <input
             type="text"
             id="cardNumber"
@@ -100,7 +77,6 @@ function CreditCardForm({ totalAmount }) {
           />
         </div>
         <div className="form-group">
-          {/* <label htmlFor="expirationDate">Expiration Date:</label> */}
           <input
             type="text"
             id="expirationDate"
@@ -114,7 +90,6 @@ function CreditCardForm({ totalAmount }) {
           />
         </div>
         <div className="form-group">
-          {/* <label htmlFor="cvv">CVV:</label> */}
           <input
             type="text"
             id="cvv"
@@ -128,7 +103,6 @@ function CreditCardForm({ totalAmount }) {
           />
         </div>
         <div className="form-group">
-          {/* <label htmlFor="name">Name on Card:</label> */}
           <input
             type="text"
             id="name"
@@ -141,7 +115,6 @@ function CreditCardForm({ totalAmount }) {
           />
         </div>
         <button type="submit" id='checkoutButton'onClick={handleSubmit}>שלם</button>
-        {/* <Link to={'/thanks'}><button type="submit" id='checkoutButton'onClick={() => { window.scrollTo(0, 0); }}>שלם</button></Link> */}
       </form>
     </div>
   );

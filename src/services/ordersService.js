@@ -9,35 +9,14 @@ const getOrdersByUserId = async (userId) => {
         throw error;
     }
 };
-
-const createOrder = async (orderData) => {
-    console.log('Creating order with data:', orderData);
-  
-    const response = await fetch('/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(orderData), // המרת אובייקט ל-JSON
-    });
-  
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+const createOrder = async (newOrder) => {
+    try {
+        const res = await apiClient.post("Orders", newOrder);
+        return res.data; 
+    } catch (error) {
+        console.error('Error creating order:', error);
+        throw error;
     }
-  
-    const result = await response.json();
-    return result.orderId; // החזרת ה-ID של ההזמנה
-  };
-
-  
-// const createOrder = async (newOrder) => {
-//     try {
-//         const res = await apiClient.post("Orders", newOrder);
-//         return res.data; 
-//     } catch (error) {
-//         console.error('Error creating order:', error);
-//         throw error;
-//     }
-// };
+};
 
 export { getOrdersByUserId, createOrder };

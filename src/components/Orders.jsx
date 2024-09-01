@@ -11,7 +11,6 @@ const Orders = ({ orders = [] }) => {
         ...prevState,
         [productId]: product
       }));
-      console.log(itemProducts);
     } catch (error) {
       console.error('Error fetching product:', error);
     }
@@ -47,21 +46,29 @@ const Orders = ({ orders = [] }) => {
             <p>מספר הזמנה: {getLastSixDigits(order.orderId)}</p>
             <p>תאריך: {new Date(order.orderDate).toLocaleDateString()}</p> 
             <p>סטטוס תשלום: {order.paymentStatus ? 'שולם' : 'לא שולם'}</p> 
-            <p>סה"כ: {order.totalAmount} ש"ח</p>
+            <p>סה"כ: {order.totalAmount.toLocaleString()} ש"ח </p>
             {order.orderItems && order.orderItems.length > 0 && (
               <div>
-                <h3>פריטי הזמנה:</h3>
+                <h3>מוצרים:</h3>
+                <div className="item">
+                  <p className="detailsItemTitle">תמונה: </p>
+                  <p className="detailsItemTitle">שם מוצר:</p>
+                  <p className="detailsItemTitle">מחיר:</p>
+                  <p className="detailsItemTitle">כמות:</p>
+                  <p className="detailsItemTitle">מזהה מוצר:</p>
+                </div>
                 {order.orderItems.map(item => (
                   <div key={item.orderItemId} >
                     {itemProducts[item.productId] && (
-                      <div className="item">
-                        <p className="detailsItem">
-                          <img className='detailsItemImg' src={itemProducts[item.productId].imagePath} alt={itemProducts[item.productId].imagePath} />
-                        </p>
-                        <p className="detailsItem">שם מוצר: {itemProducts[item.productId].productName}</p>
-                        <p className="detailsItem">כמות: {item.quantity}</p>
-                        <p className="detailsItem">מזהה מוצר: {getLastSixDigits(item.productId)}</p>
-                      </div>
+                        <div className="item">
+                          <p className="detailsItem">
+                            <img className='detailsItemImg' src={itemProducts[item.productId].imagePath} alt={itemProducts[item.productId].imagePath} />
+                          </p>
+                          <p className="detailsItem">{itemProducts[item.productId].productName}</p>
+                          <p className="detailsItem">{itemProducts[item.productId].price}</p>
+                          <p className="detailsItem">{item.quantity}</p>
+                          <p className="detailsItem">{getLastSixDigits(item.productId)}</p>
+                        </div>
                     )}
                   </div>
                 ))}
