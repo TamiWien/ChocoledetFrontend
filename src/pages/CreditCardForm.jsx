@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2'; 
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { createOrder } from '../services/ordersService';
 import { useSelector } from 'react-redux';
 import { selectUserId } from '../states/userSlice';
@@ -14,6 +14,7 @@ function CreditCardForm({ totalAmount }) {
   const [name, setName] = useState('');
   const [focus, setFocus] = useState('');
   const userId = useSelector(selectUserId);
+  const navigate = useNavigate();
 
   console.log(userId);
 
@@ -29,9 +30,9 @@ function CreditCardForm({ totalAmount }) {
 
   const location = useLocation();
 
-  const orderItemsArray = location.state?.orderItemsArray || [];  // קבלת הנתונים דרך location
+  const orderItems = location.state?.orderItems || [];
 
-   console.log('orderItemsArray:', orderItemsArray);
+   console.log('orderItems:', orderItems);
    console.log('totalAmount:', totalAmount);
 
   const handleSubmit = async (event) => {
@@ -40,7 +41,7 @@ function CreditCardForm({ totalAmount }) {
       userId: userId,
       paymentStatus: true,
       totalAmount: totalAmount,
-      orderItems: orderItemsArray,
+      orderItems: orderItems,
     };
   
     console.log('Order data before sending:', JSON.stringify(orderData, null, 2));
