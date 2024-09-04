@@ -49,7 +49,7 @@ useEffect(() => {
             console.log(user);
             if (user) {
                 setLoginUserrName(user.userName);
-                dispatch(setLoginUser({ userId: user.userId, userName: user.userName, email: user.email, password: user.password }));
+                dispatch(setLoginUser({ userId: user.userId, userName: user.userName, email: user.email, password: user.password, isDeleted: user.isDeleted, phone: user.phone }));
             }
             setIsOpen(!isOpen);
             console.log(user);

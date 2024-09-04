@@ -16,6 +16,8 @@ const PersonalArea = () => {
     const [saveUserName, setSaveUserName] = useState('');
     const [tempPassword, setTempPassword] = useState('');
     const [savePassword, setSavePassword] = useState('');
+    const [tempPhone, setTempPhone] = useState('');
+    const [savePhone, setSavePhone] = useState('');
     const [tempEmail, setTempEmail] = useState('');
 
     useEffect(() => {
@@ -27,6 +29,8 @@ const PersonalArea = () => {
                 setSaveUserName(user.userName);
                 setTempPassword(user.password);
                 setSavePassword(user.password);
+                setTempPhone(user.phone);
+                setSavePhone(user.phone);
                 setTempEmail(user.email);
             } catch (error) {
                 console.error('Error fetching user:', error);
@@ -37,19 +41,22 @@ const PersonalArea = () => {
 
     const handleChange = (e) => {
         if (e.target.name === 'userName') setTempUserName(e.target.value);
+        console.log('e.target.value:' + e.target.value);
         if (e.target.name === 'password') setTempPassword(e.target.value);
+        if (e.target.name === 'phone') setTempPhone(e.target.value);
     };
 
     const handleSubmit = async (e) => {
         if (e === 'userName') setSaveUserName(tempUserName);
         if (e === 'password') setSavePassword(tempPassword);
+        if (e === 'phone') setSavePhone(tempPhone);
         const userData = {
-            userName: saveUserName,
+            userName: tempUserName,
             email: tempEmail,
-            password: savePassword,
+            password: tempPassword,
+            isDeleted: false,
+            phone: tempPhone,
           };
-        console.log(userId);
-        console.log(userData);
         console.log('user data before sending:', JSON.stringify(userData, null, 2));
         try {
             setEditMode(false);
@@ -58,19 +65,26 @@ const PersonalArea = () => {
         } catch (error) {
             console.error('Error updating user:', error);
         }
+        if (e === 'userName') setSaveUserName(tempUserName);
+        if (e === 'password') setSavePassword(tempPassword);
+        if (e === 'phone') setSavePhone(tempPhone);
+        console.log(userData);
     };
 
     const handleCancel = (field) => {
         if (field === 'userName') setTempUserName(userConected.userName);
         if (field === 'password') setTempPassword(userConected.password);
+        if (field === 'phone') setTempPhone(userConected.phone);
         setEditMode(false);
     };
 
     const handleDelete = async () => {
         try {
             await deleteUser(userId);
+            console.log(userId);
             alert('User deleted successfully');
         } catch (error) {
+            console.log(userId);
             console.error('Error updating user:', error);
         }
     };
@@ -110,12 +124,26 @@ const PersonalArea = () => {
                             </>)}
                         </label>
                     </div>
+                    <div className="field">
+                        <div className='detailsIcons'><FaPhone /></div>
+                        <label> טלפון: {editMode.phone ? (
+                            <>
+                                <input className='change' name='phone' value={tempPhone} onChange={handleChange}/>
+                                <button className='change fail' type="button" onClick={(e) => handleSubmit(e, 'phone')}><CiSaveUp1 /></button>
+                                <button className='change fail' type="button" onClick={() => handleCancel('phone')}><FaTimes /></button>
+                            </>):(
+                            <>
+                                <span>{savePhone}</span>
+                                <MdEdit className='editIcon' onClick={() => setEditMode(prev => ({ ...prev, phone: true }))} />
+                            </>)}
+                        </label>
+                    </div>
                 </form>
                 <div id="noCangeDetails">
                     <div className='detailsIcons'><MdOutlineEmail /></div>
                     <div className="noChange">אימייל: <div className="noChangeIn"> {userConected.email}</div></div>
-                    <div className='detailsIcons'><FaPhone /></div>
-                    <div className="noChange">טלפון: <div className="noChangeIn">{userConected.phone || '000-000-0000'}</div></div>
+                    {/* <div className='detailsIcons'><FaPhone /></div>
+                    <div className="noChange">טלפון: <div className="noChangeIn">{userConected.phone || '000-000-0000'}</div></div> */}
                 </div>
                 <div className="deleteUser" onClick={handleDelete}>מחק חשבון משתמש<MdDeleteOutline /></div>
             </div>
@@ -125,67 +153,3 @@ const PersonalArea = () => {
 };
 
 export default PersonalArea;
-
-// import { useEffect, useState } from "react";
-// import Orders from "../components/Orders";
-// import { useLocation } from "react-router-dom";
-// import { getUserById } from "../services/usersService";
-
-// const PersonalArea = () => {
-
-//     const location = useLocation();
-//     const { userId } = location.state || {};    
-//     const [userConected, setUserConected] = useState([]);
-   
-//     const fetchData = async () => {
-//         try {
-//             const user = await getUserById(userId);
-//             setUserConected(user);  
-//       } catch (error) {
-//           console.error('Error fetching users:', error);
-//       }
-//   };
-  
-//   useEffect(() => {
-//       fetchData();
-//   },  [userId]);
-
-//   const handleSubmit = async (userName, email ,password) => {
-//     event.preventDefault();  
-//     const orderData = {
-//       userName: userConected.userName,
-//       email: userConected.email,
-//       password: userConected.password,
-//     };
-  
-//     console.log('Order data before sending:', JSON.stringify(orderData, null, 2));
-  
-//     try {
-//       await updateUser(userId, orderData);
-//     } catch (error) {
-//       console.error('Error updateUser:', error);
-//     }
-//   };
-
-//     return (
-//       <div id="personalArea">
-//         <h1>אזור אישי</h1>
-//         <div id="customerDetails">
-//             <h2>{userConected.userName || "פרטי הלקוח"}</h2>
-//             <p>שם: 
-//                 {userConected.userName}
-//                 <button onClick={handleSubmit(userConected.userName, userConected.email, userConected.password)}>3</button> 
-//                 <input className='change' placeholder='הכנס שם חדש' value={userConected.userName}
-//                     onChange={() => handleChange(e)}/>               
-//             </p> 
-//             <p>אימייל: {userConected.email}</p>
-//             <p>סיסמה: {userConected.password}</p>
-//             <p>טלפון: {userConected.phone || '000-000-0000' }</p>
-//             <p>תאריך הרשמה: {new Date(userConected.createdAt).toLocaleDateString()}</p>
-//         </div>
-//         <Orders orders={userConected.orders} />
-//       </div>
-//     );
-//   };
-  
-//   export default PersonalArea;

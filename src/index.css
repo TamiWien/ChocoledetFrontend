@@ -283,6 +283,7 @@ button:hover {
   color:#c79446;
   font-size: 60px;
   font-weight: 900;
+  text-shadow: 0 0 11px #3b1a09;
 }
 
 .typing-text-3 {
@@ -1138,25 +1139,27 @@ padding: 2%;
 }
 
 #storeCategorys{
-  width: 60%;
   height: 300px;
-  margin: auto;
-  margin-bottom: 20px;
+    padding: 0px 22%;
+    background-image: url(/src/assets/images/babyBG.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .storeCategorys{
-  width: 34%;
+  width: 37%;
   text-align: center;
-  margin: -68px 4.5% 0px 4.5%;
+  margin: -68px 3% 0px 3%;
   padding: 3%;
   background-color: #fff;
   float: right;
   border: solid 3px #dfd1bb;
-  transition: margin 1.5s ease-in-out;
+  transition: margin 1.2s ease-in-out;
 }
 
 .storeCategorys:hover{
-  margin: -95px 4.5% 0px 4.5%;
+  margin: -80px 3% 0px 3%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -1174,20 +1177,6 @@ padding: 2%;
     font-size: 15px;
     font-weight: 300;
     color: #636363;
-}
-
-#storeContent{
-  width: 100%;
-  min-height: 500px;
-  background-image: url('./assets/images/babyBG.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#storeContent button{
-  margin: -7% 35% 2% 35%;
-  width: 30%;
 }
 
 /***************************************/
@@ -1608,13 +1597,13 @@ padding: 2%;
 }
 
 ::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px;  
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #5c2c0c;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #fbfaf8;  /* creates padding around scroll thumb */
+  background-color: #5c2c0c;  
+  border-radius: 20px;  
+  border: 1px solid #fbfaf8; 
 }
 
 #sideCartContant{
@@ -1665,11 +1654,12 @@ padding: 2%;
 }
 
 #sideCartOrderSummary{
-  width: 94%;
+  width: 73%;
     padding: 0px 16px;
-    margin: 5% 0% 1% 6%;
+    margin: 5% auto 0% auto;
+    font-size: 20px;
+    font-weight: 300;
 }
-
 
 #sideCartButton:hover{
   background-color: #d4b381;
@@ -1875,6 +1865,7 @@ padding: 2%;
   float: left;
     font-size: 13px;
     color: #565656;
+    cursor: pointer;
 }
 
 .deleteUser svg{

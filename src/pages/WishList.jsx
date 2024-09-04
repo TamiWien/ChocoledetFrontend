@@ -51,7 +51,7 @@ const handleAddToCart = (product) => {
         </div>
       </div>
       <div id='wishlistContent'>
-        <div id='wishlistProductsBox'>
+        <div id='wishlistProductsBox'>{arrWishList.length==0 && <div>עוד לא הוספת מוצרים לרשימת המשאלות שלך</div>}
           {arrWishList.map((p) => (
             <div className='wishlistProductBox' key={p.item.productId}>
               <div className='productBoxIn'>
